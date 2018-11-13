@@ -370,8 +370,8 @@ for(let i = 0; i < productArr.length; i++){
         figureIndex++;
     }
 }
+//find best sale products
 
-console.log(hatList);
 /**CATEGORY PAGINATION**/
 let mainZone = document.getElementById('main-id');  //get main tag for display
 let url = window.location.href; //this is.... url
@@ -385,22 +385,22 @@ function urlHandle(){
        
         case 'hat' :{
             addLeftMenu();
-            addProductDisplayZone(position,hatList);
+            addProductDisplayZone(position,hatList, categoryUrl[0], urlParams[0]);
             break;
         }
         case 'shi' :{
             addLeftMenu();
-            addProductDisplayZone(position,shirtList);
+            addProductDisplayZone(position,shirtList, categoryUrl[0], urlParams[0]);
             break;
         }
         case 'plu' :{
             addLeftMenu();
-            addProductDisplayZone(position,plushList);
+            addProductDisplayZone(position,plushList, categoryUrl[0], urlParams[0]);
             break;
         }
         case 'fig' :{
             addLeftMenu();
-            addProductDisplayZone(position,figureList);
+            addProductDisplayZone(position,figureList, categoryUrl[0], urlParams[0]);
             break;
         }
 
@@ -449,7 +449,7 @@ function filterList(){
     return text;
 }   
 
-function addProductDisplayZone(position,productList){
+function addProductDisplayZone(position,productList,categoryUrl,baseUrl){
     //Create product display zone
     let displayZone = document.createElement('div');
     displayZone.className = "product-display-zone";
@@ -457,19 +457,20 @@ function addProductDisplayZone(position,productList){
     //create main frame of product display zone
     addProductZoneMain("Pokemon Figure",displayZone);
     //display product list 
-    document.querySelector('.product-zone').innerHTML = addProduct(position,productList);
+    document.querySelector('.product-zone').innerHTML = addProduct(position,productList,categoryUrl,baseUrl);
     //display pagination
     addPagination(productList,position,displayZone);
     
 }
-function addProduct(position,productList){
+function addProduct(position,productList,categoryUrl,baseUrl){
     let count = 0;
     let productText = "<div class='products'>";
     for(let i = position; i < productList.length; i++){
         count++;
+        let productLink = baseUrl + "?"  + categoryUrl + "&" + position + "#" + productList[i].id;
         productText += "<div class='product'>" +
         "<div class='product-img'>"+
-        "<a href='#'>"+
+        "<a href='" + productLink + "' target='_blank'>" + 
         "<img src='" + productList[i].imgLink + "' alt='" + productList[i].alternateText + "'>" +
         "</a>"+
         "</div>" +
@@ -531,6 +532,126 @@ function addProductZoneMain(categoryName, displayZone){
     productZone.className = 'product-zone';
     displayZone.appendChild(productZone);
 }
+
+
+function getProduct() {
+  var i;
+  var url = window.location.href;
+  var params = url.split('?');
+  var chuoicon = params[1];
+  chuoicon = chuoicon.split('&');
+  if (chuoicon[1].indexOf('#') != -1) {
+    var chuoicon2 = chuoicon[1].split('#');
+    //alert(chuoicon2[1]);
+
+    
+    document.getElementById("main-id").innerHTML = defaultProductPageLayout();
+
+    for (i=0; i<productArr.length; i++) {
+      if (productArr[i].id == chuoicon2[1]) {
+        var productThumbnail = document.getElementsByClassName('product-thumbnail');
+        var productImage = document.getElementsByClassName('product-image');
+        console.log(productThumbnail);
+        console.log(productImage);
+        var s1 = ''; //chuỗi s1 chứa các tag <img> để in ra product-thumbnail
+        var s2 = ''; //chuỗi s1 chứa các tag <img> để in ra product-image
+        //mỗi sp 4 hình -> i chạy từ 1 đến 4
+        var j;
+        //../img/fig/fig08/fig08_1.jpg
+        for (j=1; j<=4; j++) {
+          var filter = productArr[i].id.substr(0,3);
+          s1 += '<img src="../img/' +
+          filter +
+          '/' +
+          productArr[i].id +
+          '/' +
+          productArr[i].id + '_' + j + '.jpg" alt="' + productArr[i].id + '_' + j + '.jpg"' +
+          'class="demo cursor" onclick="currentSlide(' + j + ')">';
+          //alert(s1);
+          s2 += '<div class="my-slides"><img src="../img/' +
+          filter +
+          '/' +
+          productArr[i].id +
+          '/' +
+          productArr[i].id + '_' + j + '.jpg" alt="' + productArr[i].id + '_' + j + '.jpg">' +
+          '</div>';
+          //alert(s2);
+          document.title = productArr[i].name;
+        }
+        productThumbnail[0].innerHTML = s1; //do dùng getElementsByClassName nên phải ghi là productThumbnail[0]
+        productImage[0].innerHTML = s2; //do dùng getElementsByClassName nên phải ghi là productImage[0]
+      }
+    }
+    showSlides(slideIndex);
+  }
+}
+
+//default layout for product page
+function defaultProductPageLayout(){
+    let defaultLayout = '<div class="product-container">' +
+    '<div class="product-gallery">' +
+    '<div class="product-thumbnail">' +
+    '</div>' + //end of product-thumbnail
+    '<div class="product-image">' +
+    '</div>' + //end of product-image
+    '</div>' + //end of product-gallery
+    '<div class="product-info">' +
+    '<div class="product-title">' +
+    '</div>' + //end of product-title
+    '<hr>' +
+    '<div class="product-preview">' +
+    '</div>' + //end of product-preview
+    '<hr>' +
+    '<div class="product-price">' +
+    '</div>' + //end of product-price
+    '<form>' +
+    '<div class="quantity-selection">' +
+    'Quantity: <input type="number" name="quantity" min="1" max="99" value="1">' +
+    '</div>' + //end of quantity-selection
+    '<div class="buy-now-and-cart">' +
+    '<div class="buy-now-button">' +
+    '</div>' +
+    '<div class="add-to-cart">' +
+    '<i class="fa fa-shopping-cart"></i>&nbsp;Add to Cart' +
+    '</div>' +
+    '</div>' + //end of buy-now-and-cart
+    '</form>' +
+    '</div>' + //end of product-info
+    '</div>' + //end of product-container
+    '<div class="description">' +
+    '<div class="warning">' +
+    '</div>' +
+    '</div>';
+    return defaultLayout;
+}
+
+//script để show ảnh khi click vào
+var slideIndex = 1;
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("my-slides");
+  console.log(slides);
+  //alert(slideIndex);
+  //alert(slides[0]);
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  //alert(slides[slideIndex-1]);
+  slides[slideIndex-1].style.display = "block";
+}
+//kết thúc phần script show ảnh
+
+
+
+
 window.onload = function(){
     urlHandle();
+    getProduct();
 }
