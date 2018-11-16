@@ -63,11 +63,22 @@ html,body{
     border:3px dotted #eaeaea;
     border-radius:3px;
 }
+.core-list li:first-child:hover{
+  border-bottom:none;
+}
 .core-list li:hover{
     border-bottom:3px dotted black;
 }
 .core-list li i{
     margin-right:5px;
+}
+.sign-btn{
+  border:none;
+  background:none;
+  outline:none;
+}
+.sign-btn:hover{
+  border-bottom:1px solid black;
 }
 /*Search zone*/
 .search-zone{
@@ -228,11 +239,13 @@ html,body{
 /*Section 1*/
 .slideshow{
     position:relative;
+
 }
 .slide img{
     width:100%;
-    max-height:500px;
+    max-height:300px;
     object-fit: cover;
+
 }
 /*left & right arrow*/
 .pre-btn, .next-btn{
@@ -277,9 +290,9 @@ html,body{
 /*faded effect*/
 .faded{
     -webkit-animation-name:faded;
-    -webkit-animation-duration: 1.5s;
+    -webkit-animation-duration: 0.3s;
     -moz-animation-name:faded;
-    -moz-animation-duration: 1.5s;
+    -moz-animation-duration: 0.3s;
     animation-name:faded;
     animation-duration: 0.3s;
 }
@@ -451,26 +464,35 @@ html,body{
 .product .product-name a{
     text-decoration: none;
     color:black;
+    text-align: center;
 }
 .product .product-name p {
-  height: 59px;
   padding: 5px 0 0 0;
   overflow: hidden;
   font-size: .9rem;
   line-height: 18px;
   font-weight: bold;
-  text-align: center;
+  margin-left:15px;
 }
 
 .product .product-name p:hover {
   text-decoration: underline;
 }
-
-.product .product-price p {
+.product .product-price p{
+  font-size:14px;
+  font-weight:bold;
   text-align: center;
-  color: #4d4d4d;
 }
-
+.product .product-price .price-deco {
+  margin-left:10px;
+  color: #4d4d4d;
+  text-decoration: line-through;
+}
+.product .product-price .fix-price-highlight{
+  margin-left:15px;
+  text-decoration: none;
+  color:#ff5959;
+}
 .pagination {
   display: inline-block;
   padding:1em;
