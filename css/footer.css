@@ -1,0 +1,54 @@
+
+#footer-id{
+    clear:both;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    background: #00336f;
+    padding: 1.3em 1em;
+    color:#fff;
+    margin-top:2em;
+}
+.ft-box{
+	width:33%;
+	float:left;
+}
+.info-list, .contact-list{
+	list-style-type:none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+.info-list li a, .contact-list li a{
+	text-decoration:none;
+	color:#D5D4D4;
+}
+.info-list li a:hover, .contact-list li a:hover{
+	color:#fff;
+}
+.contact-list li{
+	float:left;
+	margin:0 5px 0 0;
+	font-size:2em;
+	padding:15px;
+}
+.contact-icon{
+	width:50px;
+	padding:10px;
+	border-radius:50%;
+	text-align: center;
+}
+.face-ft{
+	background: #496DB9;
+}
+.whapp-ft{
+	background: #00b489;
+}
+.insta-ft{
+	background: linear-gradient(270deg, #BC32A4 0%, #E03768 50%, #F67C33 100%);
+}
+.twit-ft{
+	background: #55ACEE;
+}
+.copy-right{
+}

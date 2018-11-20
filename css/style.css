@@ -195,7 +195,7 @@ html,body{
     padding:0;
     text-align: center;
 }
-/*Drop down items*/
+/*menu*/
 .category-box{
     display:inline-block;
     padding: 0.5em 1.5em;
@@ -310,77 +310,14 @@ html,body{
     to{opacity:1}
 }
 
-/*section 2*/
-#best-seller{
-    background:#fff;
-    padding:1em;
-}
-.news-title{
-    font-size:1.3em;
-    font-family:"Trebuchet MS";
-}
-.product-list{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr 1fr;
-    align-items: center;
-    justify-content: center;
-}
-.product-news .news-title{
-    text-align:center;
-    font-size:2.4em;
-}
-.product-box{
-    margin:5px;
-    position:relative;
-    padding-bottom:1em;
-}
-.product-box img{
-    width:100%;
-    height:200px;
-    border-radius:5px;
-    border:1px solid #C3C3C3;
-
-}
-.prod-des-btn{
-    position: absolute;
-    bottom:11px;
-    left:38%;
-    background:#fff;
-    border:none;
-    outline:none;
-    border-radius:25px;
-    padding:8px 12px;
-    border:1px solid #c3c3c3;
-}
-.add-cart{
-    position:absolute;
-    border:none;
-    outline:none;
-    background:#fff;
-    border-radius:50%;
-    padding:6px 8px;
-    right:5px;
-    top:5px;
-    color:#fff;
-    background:#ff5959;
-    transition:0.4s;
-    border:1px solid #ff5959;
-}
-.add-cart:hover{
-    background:#fff;
-    color:#ff5959;
-}
-
-
-
+/*Category page*/
 .left-menu{
     width:20%;
     float:left;
     background:#ECEAEA;
     border-radius:6px;
 }
-.inpge-search {
-  padding: 1em;
+.inpage-search {
   overflow: hidden;
 }
 .inpage-search form{
@@ -517,3 +454,22 @@ html,body{
   background-color: #ddd;
 }
 
+/**HOME PAGE DISPLAY**/
+.best-title{
+  margin:1em auto 0.5em;
+  text-align: center;
+  font-size:1.3em;
+}
+.add-cart-zone{
+  text-align: center;
+}
+.add-cart-btn{
+  border:none;
+  outline:none;
+  background:#ff5959;
+  color:#fff;
+  padding:5px 10px;
+  border-radius:5px;
+  box-shadow:2px 3px 6px rgba(0,0,0,0.48);
+  margin-bottom:8px;
+}
