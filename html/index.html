@@ -28,7 +28,7 @@
                 <ul>
                     <!-- <li><i class="fas fa-user-alt"></i>Tài khoản</li> -->
                     <li><button class="sign-btn" id="sign-up-btn">Đăng ký</button> &#8739;<button id="sign-in-btn" class="sign-btn">Đăng nhập</button></li>
-                    <div id="sign-up-box">
+                    <div class="sign-box" id="sign-up-box">
                         <span class="close" id="close-sign-up">&times;</span>
                         <form class="zoom" name="sign-up-form" id="sign-up-form">
                             <div>
@@ -52,6 +52,22 @@
                                     <button id="cancel-sign-up" class="cancel-btn">Cancel</button>
                                     <input type="submit" name="sign-up-submit" value="Sign up">
                                 </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="sign-box" id="sign-in-box">
+                        <span class="close" id="close-sign-in">&times;</span>
+                        <form class="zoom" id="sign-in-form" name="sign-in-form">
+                            <h1>Đăng nhập</h1>
+                            <p>Nhập vào tài khoản và mật khẩu của bạn để tiến hành mua hàng</p>
+                            <hr>
+                            <label for="username"><b>Email / Tên tài khoản</b></label>
+                            <input type="text" placeholder="Tài khoản" name="username">
+                            <label for="psw"><b>Mật khẩu</b></label>
+                            <input type="password" placeholder="Mật khẩu" name="psw">
+                            <div class="clearfix">
+                                <button id="cancel-sign-in" class="cancel-btn">Cancel</button>
+                                <input type="submit" name="sign-up-submit" value="Sign In">
                             </div>
                         </form>
                     </div>
