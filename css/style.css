@@ -481,7 +481,6 @@ html,body{
 }
 .product .product-price p{
   font-size:14px;
-  font-weight:bold;
   text-align: center;
 }
 .product .product-price .price-deco {
@@ -493,6 +492,8 @@ html,body{
   margin-left:15px;
   text-decoration: none;
   color:#ff5959;
+  font-weight:bold;
+  font-size: 16px
 }
 .pagination {
   display: inline-block;
