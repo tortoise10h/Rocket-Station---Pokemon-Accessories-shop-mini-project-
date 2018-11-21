@@ -1,3 +1,4 @@
+
 /**SLIDE SHOW**/
 //get all slide
 let slides = document.getElementsByClassName('slide');
@@ -306,10 +307,10 @@ productArr[71] = new products(
     'fig10', 'Amazing Figure', '460000', '330000', '../img/fig/fig10/fig10_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 productArr[72] = new products(
-    'fig11', 'Amazing Figure', '460000', '330000', '../img/fig/fig11/fig11_1.jpg', 'nuoc', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
+    'fig11', 'Amazing Figure', '460000', '330000', '../img/fig/fig11/fig11_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 productArr[73] = new products(
-    'fig12', 'Amazing Figure', '460000', '160000', '../img/fig/fig12/fig12_1.jpg', 'lua', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
+    'fig12', 'Amazing Figure', '460000', '160000', '../img/fig/fig12/fig12_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 productArr[74] = new products(
     'fig13', 'Amazing Figure', '460000', '330000', '../img/fig/fig13/fig13_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
@@ -327,7 +328,7 @@ productArr[78] = new products(
     'fig17', 'Amazing Figure', '460000', '310000', '../img/fig/fig17/fig17_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 productArr[79] = new products(
-    'fig18', 'Amazing Figure', '460000', '330000', '../img/fig/fig18/fig18_1.jpg', 'da', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
+    'fig18', 'Amazing Figure', '460000', '330000', '../img/fig/fig18/fig18_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 
 
@@ -380,13 +381,13 @@ function sortByFixPrice(){
     for(let i = 0; i < tempArr.length-1; i++){
         for(let j = i+1; j < tempArr.length; j++){
             if(tempArr[i].fixPrice > tempArr[j].fixPrice){
-             let temp = tempArr[i];
-             tempArr[i] = tempArr[j];
-             tempArr[j] = temp;
-         }
-     }
- }
- return tempArr;
+               let temp = tempArr[i];
+               tempArr[i] = tempArr[j];
+               tempArr[j] = temp;
+           }
+       }
+   }
+   return tempArr;
 }
 let bestSaleArr = [];
 function findBestSale(){
@@ -436,7 +437,6 @@ function urlHandle(){
         "</div>";
 
         let bestSellerText = bestSellerTitle +  "<div class='products'>";
-        console.log(bestSellerArr);
         for(let i = 0; i < bestSellerArr.length; i++){
             let filter = bestSellerArr[i].id.substr(0,3);
             let productLink = url + "?" + filter + "#" + bestSellerArr[i].id;
@@ -471,7 +471,6 @@ function urlHandle(){
         "</div>";
 
         let bestSaleText = bestSaleTitle +  "<div class='products'>";
-        console.log(bestSaleArr);
         for(let i = 0; i < bestSaleArr.length; i++){
             let filter = bestSaleArr[i].id.substr(0,3);
             let productLink = url + "?" + filter + "#" + bestSaleArr[i].id;
@@ -530,6 +529,7 @@ function urlHandle(){
 }
 
 function addLeftMenu(){
+
     /*CREATE LEFT MENU*/
     let leftMenu = document.createElement('div');
     leftMenu.className = "left-menu";
@@ -559,7 +559,6 @@ function addSearchInpage(){
     return searchZone;
 }
 function filterList(){
-
     let text = document.createElement('ul');
 
     let li1 = document.createElement('li');
@@ -605,15 +604,7 @@ function addProductDisplayZone(position,productList,categoryUrl,baseUrl){
     displayZone.className = "product-display-zone";
     mainZone.appendChild(displayZone); 
     //create main frame of product display zone
-    if(categoryUrl == 'shi'){
-        addProductZoneMain("Áo Thun Pokemon",displayZone);
-    }else if(categoryUrl == 'plu'){
-        addProductZoneMain("Thú Nhồi Bông",displayZone);
-    }else if(categoryUrl == 'fig'){
-        addProductZoneMain("Pokemon Figure",displayZone);
-    }else if(categoryUrl == 'hat'){
-        addProductZoneMain("Nón Pokemon",displayZone);
-    }
+    addProductZoneMain("Pokemon Figure",displayZone);
     //display product list 
     document.querySelector('.product-zone').innerHTML = addProduct(position,productList,categoryUrl,baseUrl);
     //display pagination
@@ -808,9 +799,20 @@ function showSlides(n) {
 }
 //kết thúc phần script show ảnh
 
-
-
-
+let userCategory = document.getElementsByClassName('user-category');
+userCategory[0].style.display = "none";
+userCategory[1].style.display = "none";
+    
+function checkLoginStatus(){
+    let signZone = document.getElementById('sign-zone');
+    let loginCheck  = JSON.parse(localStorage.getItem('check'));
+    if(loginCheck ==  true){
+        signZone.style.display = "none";
+        userCategory[0].style.display = "inline-block";
+        userCategory[1].style.display = "inline-block";
+    }
+}
+checkLoginStatus();
 window.onload = function(){
     urlHandle();
     getProduct();
