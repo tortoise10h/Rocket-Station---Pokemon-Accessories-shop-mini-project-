@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
     crossorigin="anonymous">
+    <link rel="icon" type="image/jpg" href="../rocket station logo.png">
     <link rel="stylesheet" href="../css/product-page.css">
     <link rel="stylesheet" href="../css/signform.css">
     <link rel="stylesheet" href="../css/footer.css">
@@ -27,22 +28,22 @@
             </div>
             <div class="core-list">
                 <ul>
-                    <!-- <li><i class="fas fa-user-alt"></i>Tài khoản</li> -->
-                    <li><button class="sign-btn" id="sign-up-btn">Đăng ký</button> &#8739;<button id="sign-in-btn" class="sign-btn">Đăng nhập</button></li>
+                    <li id="sign-zone"><button class="sign-btn" id="sign-up-btn">Đăng ký</button> &#8739;<button id="sign-in-btn" class="sign-btn">Đăng nhập</button></li>
+                    <li class="user-category"><i class="fas fa-user-alt"></i>Tài khoản</li>
                     <div class="sign-box" id="sign-up-box">
                         <span class="close" id="close-sign-up">&times;</span>
-                        <form class="zoom" name="sign-up-form" id="sign-up-form">
+                        <form class="zoom" name="sign-up-form" id="sign-up-form" method="POST">
                             <div>
                                 <h1>Đăng ký tài khoản</h1>
                                 <p>Hãy nhập đầy đủ thông tin yêu cầu dưới đây để tạo cho bạn một tài khoản</p>
                                 <hr>
-                                <label for="email"><b>Email</b></label>
+                                <label for="email"><b>Tài khoản / Email</b></label>
                                 <input type="text" placeholder="Email" name="email" required>
 
-                                <label for="psw"><b>Password</b></label>
+                                <label for="psw"><b>Mật khẩu</b></label>
                                 <input type="password" placeholder="Mật khẩu" name="psw" required>
 
-                                <label for="psw-repeat"><b>Repeat Password</b></label>
+                                <label for="psw-repeat"><b>Nhập lại mật khẩu</b></label>
                                 <input type="password" placeholder="Nhập lại mật khẩu" name="psw-repeat" required>
 
                                 <label>
@@ -58,7 +59,7 @@
                     </div>
                     <div class="sign-box" id="sign-in-box">
                         <span class="close" id="close-sign-in">&times;</span>
-                        <form class="zoom" id="sign-in-form" name="sign-in-form">
+                        <form class="zoom" id="sign-in-form" name="sign-in-form" method="POST">
                             <h1>Đăng nhập</h1>
                             <p>Nhập vào tài khoản và mật khẩu của bạn để tiến hành mua hàng</p>
                             <hr>
@@ -73,14 +74,14 @@
                         </form>
                     </div>
                     <li><i class="fas fa-bell"></i>Thông báo</li>
-                    <li><i class="icon fas fa-history"></i> Lịch sử đơn hàng</li>
+                    <li class="user-category"><i class="icon fas fa-history"></i> Lịch sử đơn hàng</li>
                     <li><i class="icon fas fa-asterisk"></i></i>About us</li>
                 </ul>
             </div>
         </div>
         <div id="search-zone" class="search-zone">
             <div class="web-logo">
-                <a href="index.html"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/1200px-International_Pok%C3%A9mon_logo.svg.png"></a>
+                <a href="index.html"> <img src="../rocket station logo.png"></a>
             </div>
             <div class="search-box">
                 <form class="search-form">
@@ -190,6 +191,7 @@
                 <li><a href="#" title="instagram" target="_blank"><i class="contact-icon insta-ft fab fa-instagram"></i></a></li>
                 <li><a href="#" title="twitter" target="_blank"><i class="contact-icon twit-ft fab fa-twitter"></i></a></li>
                 <div style="clear: both"></div>
+                
             </ul><br><hr>
             <div class="poke"> © Pokémon 2018 </div>
         </div>
