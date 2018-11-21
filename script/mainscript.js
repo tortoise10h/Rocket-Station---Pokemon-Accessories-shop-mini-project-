@@ -306,10 +306,10 @@ productArr[71] = new products(
     'fig10', 'Amazing Figure', '460000', '330000', '../img/fig/fig10/fig10_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 productArr[72] = new products(
-    'fig11', 'Amazing Figure', '460000', '330000', '../img/fig/fig11/fig11_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
+    'fig11', 'Amazing Figure', '460000', '330000', '../img/fig/fig11/fig11_1.jpg', 'nuoc', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 productArr[73] = new products(
-    'fig12', 'Amazing Figure', '460000', '160000', '../img/fig/fig12/fig12_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
+    'fig12', 'Amazing Figure', '460000', '160000', '../img/fig/fig12/fig12_1.jpg', 'lua', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 productArr[74] = new products(
     'fig13', 'Amazing Figure', '460000', '330000', '../img/fig/fig13/fig13_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
@@ -327,7 +327,7 @@ productArr[78] = new products(
     'fig17', 'Amazing Figure', '460000', '310000', '../img/fig/fig17/fig17_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 productArr[79] = new products(
-    'fig18', 'Amazing Figure', '460000', '330000', '../img/fig/fig18/fig18_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
+    'fig18', 'Amazing Figure', '460000', '330000', '../img/fig/fig18/fig18_1.jpg', 'da', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 
 
@@ -541,7 +541,7 @@ function addLeftMenu(){
     filterZone.className = "filter";
     leftMenu.appendChild(filterZone);
     
-    document.querySelector('.filter').innerHTML = filterList();
+    document.querySelector('.filter').appendChild(filterList());
 }
 
 function addSearchInpage(){
@@ -559,15 +559,43 @@ function addSearchInpage(){
     return searchZone;
 }
 function filterList(){
-    let text = "<ul>";
-    text += "<li><a href=''>Giá từ thấp đến cao</a></li>";
-    text += "<li><a href=''>Giá từ cao đến thấp</a></li>";
-    text += "<li><a href=''>Hệ lửa</a></li>";
-    text += "<li><a href=''>Hệ điện</a></li>";
-    text += "<li><a href=''>Hệ nước</a></li>";
-    text += "<li><a href=''>Hệ cây</a></li>";
-    text += "<li><a href=''>Hệ đá</a></li>";
-    text += "</ul>";
+
+    let text = document.createElement('ul');
+
+    let li1 = document.createElement('li');
+    li1.id = 'asc-price';
+    li1.appendChild(document.createTextNode('Giá từ thấp đến cao'));
+    text.appendChild(li1);
+
+    let li2 = document.createElement('li');
+    li2.id = 'des-price';
+    li2.appendChild(document.createTextNode('Giá từ cao đến thấp'));
+    text.appendChild(li2);
+
+    let li3 = document.createElement('li');
+    li3.id = 'fire-ele';
+    li3.appendChild(document.createTextNode('Hệ lửa'));
+    text.appendChild(li3);
+
+    let li4 = document.createElement('li');
+    li4.id = 'elec-ele';
+    li4.appendChild(document.createTextNode('Hệ điện'));
+    text.appendChild(li4);
+
+    let li5 = document.createElement('li');
+    li5.id = 'water-ele';
+    li5.appendChild(document.createTextNode('Hệ nước'));
+    text.appendChild(li5);
+
+    let li6 = document.createElement('li');
+    li6.id = 'grass-ele';
+    li6.appendChild(document.createTextNode('Hệ cây'));
+    text.appendChild(li6);
+
+    let li7 = document.createElement('li');
+    li7.id = 'rock-ele';
+    li7.appendChild(document.createTextNode('Hệ đá'));
+    text.appendChild(li7);
     return text;
 }   
 
@@ -577,7 +605,15 @@ function addProductDisplayZone(position,productList,categoryUrl,baseUrl){
     displayZone.className = "product-display-zone";
     mainZone.appendChild(displayZone); 
     //create main frame of product display zone
-    addProductZoneMain("Pokemon Figure",displayZone);
+    if(categoryUrl == 'shi'){
+        addProductZoneMain("Áo Thun Pokemon",displayZone);
+    }else if(categoryUrl == 'plu'){
+        addProductZoneMain("Thú Nhồi Bông",displayZone);
+    }else if(categoryUrl == 'fig'){
+        addProductZoneMain("Pokemon Figure",displayZone);
+    }else if(categoryUrl == 'hat'){
+        addProductZoneMain("Nón Pokemon",displayZone);
+    }
     //display product list 
     document.querySelector('.product-zone').innerHTML = addProduct(position,productList,categoryUrl,baseUrl);
     //display pagination
