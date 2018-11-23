@@ -85,9 +85,7 @@ function saveAccount(e){
     }
 }
 
-let signZone = document.getElementById('sign-zone');
-let check = false;
-localStorage.setItem('check', JSON.stringify(check));
+
 /**LOGIN ACCOUNT**/
 //get sign in box
 let signInSubmit = document.forms["sign-in-form"];

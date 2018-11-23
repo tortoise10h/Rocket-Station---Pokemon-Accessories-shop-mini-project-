@@ -802,6 +802,7 @@ function showSlides(n) {
 let userCategory = document.getElementsByClassName('user-category');
 userCategory[0].style.display = "none";
 userCategory[1].style.display = "none";
+userCategory[2].style.display = "none";
     
 function checkLoginStatus(){
     let signZone = document.getElementById('sign-zone');
@@ -810,10 +811,20 @@ function checkLoginStatus(){
         signZone.style.display = "none";
         userCategory[0].style.display = "inline-block";
         userCategory[1].style.display = "inline-block";
+        userCategory[2].style.display = "inline-block";
     }
 }
-checkLoginStatus();
+userCategory[2].addEventListener('click',logout);
+
+function logout(){
+    let checkLogout = confirm("Bạn có muốn đăng xuất không?");
+    if(checkLogout){
+        localStorage.removeItem('check');
+        document.location.reload();
+    }
+}
 window.onload = function(){
+    checkLoginStatus();
     urlHandle();
     getProduct();
     sortByFixPrice();
