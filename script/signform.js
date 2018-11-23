@@ -56,7 +56,6 @@ let signUpSubmit = document.forms["sign-up-form"];
 let signUpSubmitBtn = document.forms["sign-up-form"]["sign-up-submit"];
 // signUpSubmit.addEventListener('submit',saveAccount);
 signUpSubmitBtn.addEventListener('click',saveAccount);
-console.log(signUpSubmitBtn);
 //Get username and password to create new account from sign up from
 function saveAccount(){
     let usernameRegis = document.forms["sign-up-form"]["email"].value;
@@ -103,14 +102,19 @@ function checkLogin(){
     //get account array from local storage
     let accounts = JSON.parse(localStorage.getItem('accounts'));
     //check username and password of user
+    let isAccountExists = false;
     for(let i = 0; i < accounts.length; i++){
         if(usernameLogin == accounts[i].username && passwordLogin == accounts[i].password){
             let check2 = JSON.parse(localStorage.getItem('check'));
             check2 = true;
             localStorage.setItem('check', JSON.stringify(check2));
             alert("Login succesfully!!!!");
+            isAccountExists = true;
             window.location.reload();
         }
+    }
+    if(isAccountExists == false){
+        alert("Tên tài khoản hoặc mật khẩu không chính xác!!!");
     }
 }
 
