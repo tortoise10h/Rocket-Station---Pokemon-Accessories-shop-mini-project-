@@ -456,7 +456,7 @@ function urlHandle(){
             "<p>"  + "<span class='fix-price-highlight'>" + bestSellerArr[i].fixPrice + "₫" + "</span>" + "<span class='price-deco'>" + bestSellerArr[i].firstPrice + "₫" + "</span>"  +"</p>" +
             "</div>"+
             "<div class='add-cart-zone'>"+
-            "<button class='add-cart-btn'>Thêm vào giỏ</button>" +
+            "<button class='add-cart-btn' value='" + bestSellerArr[i].id + "'>Thêm vào giỏ</button>" + 
             "</div>" +
             '</div>';
         }

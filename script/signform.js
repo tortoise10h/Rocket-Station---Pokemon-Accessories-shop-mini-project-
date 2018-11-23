@@ -56,7 +56,7 @@ let signUpSubmit = document.forms["sign-up-form"];
 signUpSubmit.addEventListener('submit',saveAccount);
 
 //Get username and password to create new account from sign up from
-function saveAccount(e){
+function saveAccount(){
     let usernameRegis = document.forms["sign-up-form"]["email"].value;
     let passwordRegis = document.forms["sign-up-form"]["psw"].value;
 
@@ -74,6 +74,7 @@ function saveAccount(e){
         //push to local storage
         localStorage.setItem('accounts', JSON.stringify(accounts));
         alert("Register Successfully");
+        window.location.reload();
     }else{
         //get accounts array from local storage
         let accounts = JSON.parse(localStorage.getItem('accounts'));
@@ -82,14 +83,16 @@ function saveAccount(e){
         //push accounts array back to local storage
         localStorage.setItem('accounts', JSON.stringify(accounts));
         alert("Register Successfully");
+        window.location.reload();
     }
+
 }
 
 
 /**LOGIN ACCOUNT**/
 //get sign in box
 let signInSubmit = document.forms["sign-in-form"];
-signInSubmit.addEventListener('click',checkLogin);
+signInSubmit.addEventListener('submit',checkLogin);
 function checkLogin(){
     //get user name and password from user input
     let usernameLogin = document.forms["sign-in-form"]["username"].value;
@@ -107,5 +110,4 @@ function checkLogin(){
         }
     }
 }
-
 

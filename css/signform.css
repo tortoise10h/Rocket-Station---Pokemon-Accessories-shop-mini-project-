@@ -75,7 +75,7 @@
     width:50%;
     float:left;
 }
-input[name="sign-up-submit"]{
+input[name="sign-in-submit"], input[name="sign-up-submit"]{
     background-color: #00336f;
     color: white;
     padding: 14px 20px;
