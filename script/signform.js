@@ -89,7 +89,7 @@ function saveAccount(e){
 /**LOGIN ACCOUNT**/
 //get sign in box
 let signInSubmit = document.forms["sign-in-form"];
-signInSubmit.addEventListener('submit',checkLogin);
+signInSubmit.addEventListener('click',checkLogin);
 function checkLogin(){
     //get user name and password from user input
     let usernameLogin = document.forms["sign-in-form"]["username"].value;
@@ -103,7 +103,7 @@ function checkLogin(){
             check2 = true;
             localStorage.setItem('check', JSON.stringify(check2));
             alert("Login succesfully!!!!");
-            
+            window.location.reload();
         }
     }
 }
