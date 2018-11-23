@@ -381,13 +381,13 @@ function sortByFixPrice(){
     for(let i = 0; i < tempArr.length-1; i++){
         for(let j = i+1; j < tempArr.length; j++){
             if(tempArr[i].fixPrice > tempArr[j].fixPrice){
-               let temp = tempArr[i];
-               tempArr[i] = tempArr[j];
-               tempArr[j] = temp;
-           }
-       }
-   }
-   return tempArr;
+             let temp = tempArr[i];
+             tempArr[i] = tempArr[j];
+             tempArr[j] = temp;
+         }
+     }
+ }
+ return tempArr;
 }
 let bestSaleArr = [];
 function findBestSale(){
@@ -496,6 +496,67 @@ function urlHandle(){
         }
         bestSaleText += "</div>";
         bestSaleBox.innerHTML = bestSaleText;
+
+        //variable for check user login
+        let checkUserLogin = JSON.parse(localStorage.getItem('check'));
+
+        //If user login true => can add product to cart
+        //get all add to cart button
+        let homeAddCartBtn = document.getElementsByClassName('add-cart-btn');
+        //add event listener for each button
+        for(let i = 0; i < homeAddCartBtn.length; i++){
+            let productId = homeAddCartBtn[i].value;
+            homeAddCartBtn[i].addEventListener('click', function(){
+                saveProduct(productId);
+            });
+        }
+
+        function saveProduct(productId){
+            if(checkUserLogin === null){
+                alert("Cần phải đăng nhập trước khi mua hàng!!!");
+            }else{
+                //variable to get information of product
+                let productImgLink;
+                let productName;
+                let productFirstPrice;
+                let productLastPrice;
+                //get product infomation
+                //find product out
+                for(let i = 0; i < productArr.length; i++){
+                    if(productArr[i].id == productId){
+                        productImgLink = productArr[i].imgLink;
+                        productName = productArr[i].name;
+                        productFirstPrice = productArr[i].firstPrice;
+                        productLastPrice = productArr[i].fixPrice;
+                        break;
+                    }
+                }
+                //object for product in cart
+                let productCart = {
+                    imgLink: productImgLink,
+                    name: productName,
+                    price: productFirstPrice,
+                    lastPrice: productLastPrice
+                }
+
+
+                //check exists of product in cart array
+                if(localStorage.getItem('productCartArr') === null){
+                    let productCartArr = [];
+                    productCartArr.push(productCart);
+                    //re-set to local storage
+                    localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
+                    alert("Thêm vào giỏ thành công!!!");
+                }else{
+                    let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
+                    productCartArr.push(productCart);
+                    //re-set to local storage
+                    localStorage.setItem('productCartArr',JSON.stringify(productCartArr));
+                    alert("Thêm vào giỏ thành công!!!");
+                }
+            }
+        }
+
     }else{
         let urlParams = url.split("?"); 
         let categoryUrl = urlParams[1];
@@ -787,7 +848,6 @@ function currentSlide(n) {
 function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("my-slides");
-  console.log(slides);
   //alert(slideIndex);
   //alert(slides[0]);
   if (n > slides.length) {slideIndex = 1}
@@ -804,7 +864,7 @@ let userCategory = document.getElementsByClassName('user-category');
 userCategory[0].style.display = "none";
 userCategory[1].style.display = "none";
 userCategory[2].style.display = "none";
-    
+
 function checkLoginStatus(){
     let signZone = document.getElementById('sign-zone');
     let loginCheck  = JSON.parse(localStorage.getItem('check'));
@@ -824,6 +884,9 @@ function logout(){
         document.location.reload();
     }
 }
+
+
+
 window.onload = function(){
     checkLoginStatus();
     urlHandle();
