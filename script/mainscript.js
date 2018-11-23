@@ -490,7 +490,7 @@ function urlHandle(){
             "<p>"  + "<span class='fix-price-highlight'>" + bestSaleArr[i].fixPrice + "₫" + "</span>" + "<span class='price-deco'>" + bestSaleArr[i].firstPrice + "₫" + "</span>"  +"</p>" +
             "</div>"+
             "<div class='add-cart-zone'>"+
-            "<button class='add-cart-btn'>Thêm vào giỏ</button>" +
+            "<button class='add-cart-btn' value='" + bestSaleArr[i].id + "'>Thêm vào giỏ</button>" + 
             "</div>" +
             '</div>';
         }
@@ -701,12 +701,13 @@ function getProduct() {
       if (productArr[i].id == chuoicon[1]) {
         var productThumbnail = document.getElementsByClassName('product-thumbnail');
         var productImage = document.getElementsByClassName('product-image');
-        console.log(productThumbnail);
-        console.log(productImage);
+        let addToCart = document.getElementsByClassName('add-to-cart');
         var s1 = ''; //chuỗi s1 chứa các tag <img> để in ra product-thumbnail
         var s2 = ''; //chuỗi s1 chứa các tag <img> để in ra product-image
+        var s3; //chuỗi s3 chứa button và trong button có id từng sản phẩm để phục vụ cho bỏ vào giỏ hàng
         //mỗi sp 4 hình -> i chạy từ 1 đến 4
         var j;
+        s3 = "<button value='" + productArr[i].id + "'><i class='fa fa-shopping-cart'></i>&nbsp;Thêm vào giỏ</button>"
         //../img/fig/fig08/fig08_1.jpg
         for (j=1; j<=4; j++) {
           var filter = productArr[i].id.substr(0,3);
@@ -730,6 +731,7 @@ function getProduct() {
       }
         productThumbnail[0].innerHTML = s1; //do dùng getElementsByClassName nên phải ghi là productThumbnail[0]
         productImage[0].innerHTML = s2; //do dùng getElementsByClassName nên phải ghi là productImage[0]
+        addToCart[0].innerHTML = s3; //do ... như trên luôn
     }
 }
 showSlides(slideIndex);
@@ -763,7 +765,6 @@ function defaultProductPageLayout(){
     '<div class="buy-now-button">' +
     '</div>' +
     '<div class="add-to-cart">' +
-    '<i class="fa fa-shopping-cart"></i>&nbsp;Add to Cart' +
     '</div>' +
     '</div>' + //end of buy-now-and-cart
     '</form>' +

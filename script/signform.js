@@ -53,8 +53,10 @@ function hideSignInBox(){
 /**SIGN UP ACCOUNT**/
 //Get submit form sign up box
 let signUpSubmit = document.forms["sign-up-form"];
-signUpSubmit.addEventListener('submit',saveAccount);
-
+let signUpSubmitBtn = document.forms["sign-up-form"]["sign-up-submit"];
+// signUpSubmit.addEventListener('submit',saveAccount);
+signUpSubmitBtn.addEventListener('click',saveAccount);
+console.log(signUpSubmitBtn);
 //Get username and password to create new account from sign up from
 function saveAccount(){
     let usernameRegis = document.forms["sign-up-form"]["email"].value;
@@ -92,7 +94,8 @@ function saveAccount(){
 /**LOGIN ACCOUNT**/
 //get sign in box
 let signInSubmit = document.forms["sign-in-form"];
-signInSubmit.addEventListener('submit',checkLogin);
+let signInSubmitBtn = document.forms["sign-in-form"]["sign-in-submit"];
+signInSubmitBtn.addEventListener('click',checkLogin);
 function checkLogin(){
     //get user name and password from user input
     let usernameLogin = document.forms["sign-in-form"]["username"].value;

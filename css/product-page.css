@@ -75,10 +75,10 @@ body {
   /* make scrollbar transparent */
 }
 
-.add-to-cart {
+.add-to-cart button{
   color: #fff;
   background: #ff5959;
-  padding: 10px;
+  padding: 12px 10px;
   margin-top: 60px;
   width: 150px;
   text-align: center;
@@ -86,6 +86,8 @@ body {
   float: left;
   cursor: pointer;
   box-shadow: 2px 3px 6px rgba(0,0,0,0.36);
+  border:none;
+  outline:none;
 }
 
 .description {
