@@ -665,7 +665,15 @@ function addProductDisplayZone(position,productList,categoryUrl,baseUrl){
     displayZone.className = "product-display-zone";
     mainZone.appendChild(displayZone); 
     //create main frame of product display zone
-    addProductZoneMain("Pokemon Figure",displayZone);
+    if(categoryUrl === 'fig'){
+        addProductZoneMain("Pokemon Figure",displayZone);
+    }else if(categoryUrl === 'plu'){
+        addProductZoneMain("Thú nhồi bông",displayZone);
+    }else if(categoryUrl === 'hat'){
+        addProductZoneMain("Nón",displayZone);
+    }else{
+        addProductZoneMain("Áo thun",displayZone);
+    }
     //display product list 
     document.querySelector('.product-zone').innerHTML = addProduct(position,productList,categoryUrl,baseUrl);
     //display pagination
