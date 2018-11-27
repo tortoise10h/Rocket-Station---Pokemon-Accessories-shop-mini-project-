@@ -460,6 +460,10 @@ html,body{
 .best-box{
   text-align: center;
 }
+.best-box .products{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
+}
 .best-title{
   margin:1em auto 0.5em;
   text-align: center;

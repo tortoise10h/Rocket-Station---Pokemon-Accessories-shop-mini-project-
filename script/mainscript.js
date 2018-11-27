@@ -381,13 +381,13 @@ function sortByFixPrice(){
     for(let i = 0; i < tempArr.length-1; i++){
         for(let j = i+1; j < tempArr.length; j++){
             if(tempArr[i].fixPrice > tempArr[j].fixPrice){
-             let temp = tempArr[i];
-             tempArr[i] = tempArr[j];
-             tempArr[j] = temp;
-         }
-     }
- }
- return tempArr;
+               let temp = tempArr[i];
+               tempArr[i] = tempArr[j];
+               tempArr[j] = temp;
+           }
+       }
+   }
+   return tempArr;
 }
 let bestSaleArr = [];
 function findBestSale(){
@@ -497,8 +497,7 @@ function urlHandle(){
         bestSaleText += "</div>";
         bestSaleBox.innerHTML = bestSaleText;
 
-        //variable for check user login
-        let checkUserLogin = JSON.parse(localStorage.getItem('check'));
+        
 
         //If user login true => can add product to cart
         //get all add to cart button
@@ -509,52 +508,6 @@ function urlHandle(){
             homeAddCartBtn[i].addEventListener('click', function(){
                 saveProduct(productId);
             });
-        }
-
-        function saveProduct(productId){
-            if(checkUserLogin === null){
-                alert("Cần phải đăng nhập trước khi mua hàng!!!");
-            }else{
-                //variable to get information of product
-                let productImgLink;
-                let productName;
-                let productFirstPrice;
-                let productLastPrice;
-                //get product infomation
-                //find product out
-                for(let i = 0; i < productArr.length; i++){
-                    if(productArr[i].id == productId){
-                        productImgLink = productArr[i].imgLink;
-                        productName = productArr[i].name;
-                        productFirstPrice = productArr[i].firstPrice;
-                        productLastPrice = productArr[i].fixPrice;
-                        break;
-                    }
-                }
-                //object for product in cart
-                let productCart = {
-                    imgLink: productImgLink,
-                    name: productName,
-                    price: productFirstPrice,
-                    lastPrice: productLastPrice
-                }
-
-
-                //check exists of product in cart array
-                if(localStorage.getItem('productCartArr') === null){
-                    let productCartArr = [];
-                    productCartArr.push(productCart);
-                    //re-set to local storage
-                    localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
-                    alert("Thêm vào giỏ thành công!!!");
-                }else{
-                    let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
-                    productCartArr.push(productCart);
-                    //re-set to local storage
-                    localStorage.setItem('productCartArr',JSON.stringify(productCartArr));
-                    alert("Thêm vào giỏ thành công!!!");
-                }
-            }
         }
 
     }else{
@@ -588,7 +541,91 @@ function urlHandle(){
         }
     }
 }
+//Save product to shopping cart
+function saveProduct(productId){
+            //variable for check user login
+            let checkUserLogin = JSON.parse(localStorage.getItem('check'));
+            if(checkUserLogin === null){
+                alert("Cần phải đăng nhập trước khi mua hàng!!!");
+            }else{
+                //variable to get information of product
+                let produId;
+                let productImgLink;
+                let productName;
+                let productQuantity;
+                let productFirstPrice;
+                let productLastPrice;
+                //get product infomation
+                //find product out
+                for(let i = 0; i < productArr.length; i++){
+                    if(productArr[i].id == productId){
+                        produId = productArr[i].id;
+                        productImgLink = productArr[i].imgLink;
+                        productName = productArr[i].name;
+                        productFirstPrice = productArr[i].firstPrice;
+                        productLastPrice = productArr[i].fixPrice;
+                        productQuantity = 1;
+                        break;
+                    }
+                }
+                //object for product in cart
+                let productCart = {
+                    prodId: produId,
+                    imgLink: productImgLink,
+                    name: productName,
+                    quantity: productQuantity,
+                    price: productFirstPrice,
+                    lastPrice: productLastPrice
+                }
 
+
+                //check exists of product in cart array
+                if(localStorage.getItem('productCartArr') === null){
+                    let productCartArr = [];
+                    productCartArr.push(productCart);
+                    //re-set to local storage
+                    localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
+                    alert("Thêm vào giỏ thành công!!!");
+                }else{
+                    let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
+                    //check the exists of product in shopping cart
+                    let position = findProduct(productId, productCartArr);
+                    //if product isn't exists in shopping cart
+                    if(position === -1){
+                        productCartArr.push(productCart);
+                    }else{
+                        //handle quantity of product in shopping cart
+                        productCartArr[position].quantity = checkProductQuantity(productId, productCartArr);
+                    }
+                    
+                    //re-set to local storage
+                    localStorage.setItem('productCartArr',JSON.stringify(productCartArr));
+                    alert("Thêm vào giỏ thành công!!!");
+                }
+            }
+        }
+//find position of product in productCartArr array
+function findProduct(productId, productCartArr){
+    let pos = -1;
+    for(let i = 0; i < productCartArr.length; i++){
+        if(productId === productCartArr[i].prodId){
+            pos = i;
+            break;
+        }
+    }
+    return pos;
+}
+//handle quantity of product in shopping cart
+function checkProductQuantity(productId, productCartArr){
+    let endQuantity = 1;
+    for(let i = 0; i < productCartArr.length; i++){
+        if(productId === productCartArr[i].prodId){
+            endQuantity += productCartArr[i].quantity;
+            break;
+        }
+    }
+    return endQuantity;
+}
 function addLeftMenu(){
 
     /*CREATE LEFT MENU*/
@@ -893,11 +930,10 @@ function logout(){
     }
 }
 
-
-
 window.onload = function(){
     checkLoginStatus();
     urlHandle();
     getProduct();
     sortByFixPrice();
+    createShoppingCart();
 }

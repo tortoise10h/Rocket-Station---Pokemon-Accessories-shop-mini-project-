@@ -65,14 +65,13 @@
 .order-btn{
 	border:none;
 	outline:none;
-	background:#ff5959;
+	background:#FC7171;
 	padding:1em 1.2em;
 	color:#fff;
 	width:96%;
 	border-radius:4px;
-	opacity: 0.8;
 	box-shadow:2px 3px 6px rgba(0,0,0,0.24);	
 }
 .order-btn:hover{
-	opacity: 1;
+	background:#ff5959;
 }

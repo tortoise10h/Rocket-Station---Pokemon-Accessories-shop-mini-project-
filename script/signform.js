@@ -60,7 +60,10 @@ signUpSubmitBtn.addEventListener('click',saveAccount);
 function saveAccount(){
     let usernameRegis = document.forms["sign-up-form"]["email"].value;
     let passwordRegis = document.forms["sign-up-form"]["psw"].value;
+    let reapeatPasswordRegis = document.forms["sign-up-form"]["psw-repeat"].value;
 
+    //if user doesn't input
+    if(usernameRegis === "")
     //account object
     let account = {
         username: usernameRegis,
