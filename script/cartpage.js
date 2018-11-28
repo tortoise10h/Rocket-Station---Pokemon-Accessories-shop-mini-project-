@@ -2,7 +2,8 @@
 let urlPara = url.split("?");
 function createShoppingCart(){
 	if(urlPara[1] === "cart"){
-		let loginCheck = JSON.parse(localStorage.getItem('check'));
+		let check = JSON.parse(localStorage.getItem('check'));
+                let loginCheck = check.isLogin;
         //have to login to see shopping cart (obviously:)) )
         if(loginCheck === true){
         	slideZone.style.display = "none";
@@ -13,7 +14,7 @@ function createShoppingCart(){
                 	let cartListZone = document.querySelector('.cart-list-zone');
                 	cartListZone.innerHTML = "<p style='margin-left:8px'><i>Bạn chưa có món hàng nào trong giỏ hàng, mua hàng ngay và nhận nhiều ưu đãi từ chúng tôi</i></p>";
                 }else{
-                	//get 2 zone to inner HTML
+                        //get 2 zone to inner HTML
                 //list of product in shopping cart
                 let cartListZone = document.querySelector('.cart-list-zone');
                 //pay and order
@@ -47,6 +48,7 @@ function createShoppingCart(){
                         "</div>" +
                         "<div class='cart-quantity'>"+
                         "Số lượng: " + productCartArr[i].quantity + 
+                        //"<input type='number' min='1' max='100' value='" + productCartArr[i].quantity + "' class='prod-quantity' id='" + productCartArr[i].prodId + "'>" +   
                         "</div>" +
                         "</div>";
                     }
@@ -96,22 +98,24 @@ function deleteCartProduct(){
 	}
 
 }
+//delete function for each product in shopping cart
 function delProduct(productId){
 	let checkDel = confirm("Bạn có chắc muốn xóa sản phẩm này ra khỏi giỏ hàng?");
 	if(checkDel){
 		let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
-		//get position of that product in array
-		let pos;
-		for(let i = 0; i < productCartArr.length; i++){
+                //get position of that product in array
+                let pos;
+                for(let i = 0; i < productCartArr.length; i++){
                 	if(productCartArr[i].prodId === productId){
                 		pos = i;
                 		break;
                 	}
-		}
-		//delete that product
-		productCartArr.splice(pos,1);
-		//re-set to local storage
-		localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
+                }
+                //delete that product
+                productCartArr.splice(pos,1);
+                //re-set to local storage
+                localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
                 window.location.reload();
             }
         }
+

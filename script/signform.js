@@ -60,12 +60,32 @@ signUpSubmitBtn.addEventListener('click',saveAccount);
 function saveAccount(){
     let usernameRegis = document.forms["sign-up-form"]["email"].value;
     let passwordRegis = document.forms["sign-up-form"]["psw"].value;
+    let repeatPasswordRegis = document.forms["sign-up-form"]["psw-repeat"].value;
     //account object
     var account = {
         username: usernameRegis,
         password: passwordRegis
     };
-
+    //check if input box was ignored
+    if(usernameRegis === "" || passwordRegis === "" || repeatPasswordRegis === ""){
+        alert("Vui lòng điền đầy đủ thông tin vào các trường bên dưới!!!");
+        return false;
+    }
+    //check length of username
+    if(usernameRegis.length < 5){
+        alert("Tên tài khoản phải có 5 ký tự trở lên!!!");
+        return false;
+    }
+    //we don't accept space in register form -_-
+    if(usernameRegis.indexOf(" ") > -1 || passwordRegis.indexOf(" ") > -1 || repeatPasswordRegis.indexOf(" ") > -1){
+        alert("Tên tài khoản hoặc mật khẩu không được có khoảng trắng!!!");
+        return false;
+    }
+    //check password and repeat password
+    if(passwordRegis !== repeatPasswordRegis){
+        alert("Mật khẩu và mật khẩu nhập lại phải giống nhau!!!");
+        return false;
+    }
     //check if accounts is null
     if(localStorage.getItem('accounts') === null){
         //init new account array
@@ -73,7 +93,7 @@ function saveAccount(){
         accounts.push(account);
         //push to local storage
         localStorage.setItem('accounts', JSON.stringify(accounts));
-        alert("Register Successfully");
+        alert("Chúc mừng bạn đã đăng ký tài khoản thành công, Mời đăng nhập và trải nghiệm mua hàng cùng chúng tôi!!!");
         window.location.reload();
     }else{
         //get accounts array from local storage
@@ -82,7 +102,7 @@ function saveAccount(){
         accounts.push(account);
         //push accounts array back to local storage
         localStorage.setItem('accounts', JSON.stringify(accounts));
-        alert("Register Successfully");
+        alert("Chúc mừng bạn đã đăng ký tài khoản thành công, Mời đăng nhập và trải nghiệm mua hàng cùng chúng tôi!!!");
         window.location.reload();
     }
 
@@ -105,9 +125,12 @@ function checkLogin(){
     for(let i = 0; i < accounts.length; i++){
         if(usernameLogin == accounts[i].username && passwordLogin == accounts[i].password){
             let check2 = JSON.parse(localStorage.getItem('check'));
-            check2 = true;
+            check2 = {
+                isLogin: true,
+                currentUsername: accounts[i].username
+            };
             localStorage.setItem('check', JSON.stringify(check2));
-            alert("Login succesfully!!!!");
+            alert("Đăng nhập thành công, Xin chào " + '"' + usernameLogin + '" !!!');
             isAccountExists = true;
             window.location.reload();
         }

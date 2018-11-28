@@ -30,7 +30,7 @@
             <div class="core-list">
                 <ul>
                     <li id="sign-zone"><button class="sign-btn" id="sign-up-btn">Đăng ký</button> &#8739;<button id="sign-in-btn" class="sign-btn">Đăng nhập</button></li>
-                    <li class="user-category"><i class="fas fa-user-alt"></i>Tài khoản</li>
+                    <li class="user-category" id="user-profile"><i class="fas fa-user-alt"></i>Tài khoản</li>
                     <div class="sign-box" id="sign-up-box">
                         <span class="close" id="close-sign-up">&times;</span>
                         <form class="zoom" name="sign-up-form" id="sign-up-form" method="POST">
@@ -38,7 +38,7 @@
                                 <h1>Đăng ký tài khoản</h1>
                                 <p>Hãy nhập đầy đủ thông tin yêu cầu dưới đây để tạo cho bạn một tài khoản</p>
                                 <hr>
-                                <label for="email"><b>Tài khoản / Email</b></label>
+                                <label for="email"><b>Tài khoản / Email</b><i style="font-size:14px;padding-left:5px">(Tối thiểu 5 ký tự)</i></label>
                                 <input type="text" placeholder="Email" name="email">
 
                                 <label for="psw"><b>Mật khẩu</b></label>
@@ -200,6 +200,7 @@
         
         <div style="clear:left"></div>
     </footer>
+    <script src="../script/productArr.js"></script>
     <script src="../script/mainscript.js"></script>
     <script src="../script/signform.js"></script>
     <script src="../script/cartpage.js"></script>
