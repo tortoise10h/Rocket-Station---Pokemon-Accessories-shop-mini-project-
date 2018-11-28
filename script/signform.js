@@ -65,7 +65,7 @@ function saveAccount(){
     //if user doesn't input
     if(usernameRegis === "")
     //account object
-    let account = {
+    var account = {
         username: usernameRegis,
         password: passwordRegis
     };
