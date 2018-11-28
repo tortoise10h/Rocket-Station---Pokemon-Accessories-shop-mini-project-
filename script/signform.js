@@ -68,7 +68,7 @@ function saveAccount(){
     let account = {
         username: usernameRegis,
         password: passwordRegis
-    }
+    };
 
     //check if accounts is null
     if(localStorage.getItem('accounts') === null){
