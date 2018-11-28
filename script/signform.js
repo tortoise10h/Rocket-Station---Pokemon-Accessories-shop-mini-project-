@@ -60,8 +60,6 @@ signUpSubmitBtn.addEventListener('click',saveAccount);
 function saveAccount(){
     let usernameRegis = document.forms["sign-up-form"]["email"].value;
     let passwordRegis = document.forms["sign-up-form"]["psw"].value;
-    console.log(usernameRegis);
-    console.log(passwordRegis);
     //account object
     var account = {
         username: usernameRegis,
