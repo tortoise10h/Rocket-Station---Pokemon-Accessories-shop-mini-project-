@@ -178,8 +178,6 @@ html,body{
     color:black;
     text-align:center;
     background:#00336f;
-    display:grid;
-    grid-template-columns: 4fr 1fr;
 }
 
 .navigation-bar{
@@ -219,25 +217,6 @@ html,body{
 .category-box:hover{
     background:#fff;
     color:#ff5959;
-}
-.hot-deal-box{
-    margin-top:8px;
-}
-.hot-deal-box a{
-    background:#fff;
-    border-radius:14px;
-    text-transform: uppercase;
-    font-size:15px;
-    color:#ff5959;
-    font-weight:bold;
-    padding:5px 12px;
-    width:80%;
-    transition:0.2s;
-    text-decoration:none;
-}
-.hot-deal-box a:hover{
-    background:#ff5959;
-    color:#fff;
 }
 /**Main section***/
 /*Section 1*/

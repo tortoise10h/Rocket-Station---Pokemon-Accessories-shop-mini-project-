@@ -28,8 +28,9 @@ function createShoppingCart(){
             }else{
                 for(let i = 0; i < productCartArr.length; i++){
                 //if user login match with their product in product cart array
-            	if(check.currentUsername === productCartArr[i].user){
-        		totalPrice += parseInt(productCartArr[i].lastPrice) * parseInt(productCartArr[i].quantity);
+                if(check.currentUsername === productCartArr[i].user){
+        		let detailPageUrl = "index.html?" + productCartArr[i].prodId.substr(0,3) + "#" + productCartArr[i].prodId;
+                        totalPrice += parseInt(productCartArr[i].lastPrice) * parseInt(productCartArr[i].quantity);
                         //create list of product in shopping cart
                         cartList += "<div class='product-cart-box'>" +
                         //product image
@@ -37,8 +38,11 @@ function createShoppingCart(){
                         "<img src ='" + productCartArr[i].imgLink + "'>" +
                         "</div>" +
                         //detail of product
+                        //name of product
                         "<div class='product-cart-detail'>" +
+                        "<a class='product-cart-name' href='" + detailPageUrl + "' target='_blank'>" +
                         "<h1>" + productCartArr[i].name + "</h1>" +
+                        "</a>" +
                         //delete button
                         "<div>" +
                         "<button class='cart-del-btn' value='" + productCartArr[i].prodId + "'>Xóa</button>" +
@@ -69,8 +73,8 @@ function createShoppingCart(){
                         "</span>" + 
                         "</div>" +
                         "</div>";
-	        	}
-	            }
+                        }
+                    }
             }
                 //create text to inner to pay box zone
                 let payBoxChild = "<div class='total-price'>" + 
@@ -90,6 +94,11 @@ function createShoppingCart(){
             }
         }
         deleteCartProduct();
+        //for pay product in shopping cart
+        let payBtn = document.getElementsByClassName('order-btn');
+    	payBtn[0].addEventListener('click', function(){
+        	payCart(check.currentUsername);
+        });
     }
 }
 function shoppingCartLayout(){
@@ -155,13 +164,108 @@ function decreaseQuantity(productId){
     let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
     for(let i = 0; i < productCartArr.length; i++){
         if(productCartArr[i].prodId === productId){
-        	//can't decrease quantity of product if it just has 1
+                //can't decrease quantity of product if it just has 1
             if(productCartArr[i].quantity > 1){
-            	productCartArr[i].quantity -= 1;
+                productCartArr[i].quantity -= 1;
                 break;
             }
         }
     }
     localStorage.setItem('productCartArr',JSON.stringify(productCartArr));
     window.location.reload();
+}
+
+//for pay shopping cart
+
+function payCart(username){
+    let payConfirm = window.confirm("Bạn có muốn đặt hàng các sản phẩm trong giỏ không?");
+    if(payConfirm){
+    	//Get date time when user pays the cart
+    	let thisDate = new Date();
+    	let thisYear = thisDate.getFullYear().toString();
+    	let thisMonth = (thisDate.getMonth() + 1).toString();
+    	let thisDay = thisDate.getDate().toString();
+    	let thisHours = thisDate.getHours().toString();
+    	let thisMinutes = thisDate.getMinutes().toString();
+    	let thisSeconds = thisDate.getSeconds().toString();
+        //handle length of those day time if its length = 1, for ex thisSeconds = 7 => 07
+        if(thisMonth.length < 2){
+                thisMonth = "0" + thisMonth;
+        }
+        if(thisDay.length < 2){
+                thisDay = "0" + thisDay;
+        }
+        if(thisHours.length < 2){
+                thisHours = "0" + thisHours;
+        }
+        if(thisMinutes.length < 2){
+                thisMinutes = "0" + thisMinutes;
+        }
+        if(thisSeconds.length < 2){
+                thisSeconds = "0" + thisSeconds;
+        }
+
+
+        /*Create orderArr*/
+        //for orderArr instance var
+        let payDate = "";
+        payDate += thisDay + thisMonth + thisYear;
+        let payTime = "";
+        payTime +=  thisHours + thisMinutes + thisSeconds;
+        let orderId = thisDay + thisSeconds + thisMonth + thisMinutes + thisYear + thisHours;
+        let orderProductList = [];
+        
+        
+        //get productCartArr
+        let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
+
+        for(let i = 0; i < productCartArr.length; i++){
+            if(productCartArr[i].user === username){
+                //for instance var of element of orderProductList 
+                let productName = productCartArr[i].name;
+                let productPrice = productCartArr[i].lastPrice;
+                let productQuantity = productCartArr[i].quantity;
+                let productImage = productCartArr[i].imgLink;
+                //orderProduct object
+                var orderProduct = {
+                    name: productName,
+                    price: productPrice,
+                    quantity: productQuantity,
+                    img: productImage
+                };
+
+                orderProductList.push(orderProduct);
+            }
+        }
+
+        var order = {
+            id: orderId,
+            user: username,
+            orderDate: payDate,
+            orderTime: payTime,
+            productList: orderProductList
+        };
+
+        //check the exists of orderArr
+        if(localStorage.getItem('orderArr') === null){
+            let orderArr = [];
+            //add new order to order array
+            orderArr.push(order);
+            //re-set to local storage
+            localStorage.setItem('orderArr', JSON.stringify(orderArr));
+        }else{
+            let orderArr = JSON.parse(localStorage.getItem('orderArr'));
+            //add new order to order array
+            orderArr.push(order);
+            //re-set to local storage
+            localStorage.setItem('orderArr',JSON.stringify(orderArr));
+        }
+
+        //delete shopping cart arr
+        productCartArr.splice(0,productCartArr.length);
+        //set productCartArr back to local storage
+        localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
+        window.location.reload();
+    	alert("Đặt hàng thành công!!!");
+    }
 }

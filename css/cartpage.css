@@ -1,42 +1,51 @@
 /*For shopping cart title*/
 #shopping-cart-zone h1{
-	padding:0 0.5em;
-	font-size:2em;
+        padding:0 0.5em;
+        font-size:2em;
 }
 /*For product in shopping cart*/
 #user-product-zone{
-	display:flex;
+        display:flex;
 }
 .cart-list-zone{
-	width:80%;
+        width:80%;
 }
 /*Each product in shopping cart*/
 .product-cart-box{
-	display:grid;
-	grid-template-columns:1fr 3fr 1fr 1fr;
-	background:#fff;
-	padding:1em;
-	border-radius:4px;
-	margin-top:3px;
-	align-items: center;
+        display:grid;
+        grid-template-columns:1fr 3fr 1fr 1fr;
+        background:#fff;
+        padding:1em;
+        border-radius:4px;
+        margin-top:3px;
+        align-items: center;
 }
 .product-cart-img img{
-	width:200px;
-	height:200px;
+        width:200px;
+        height:200px;
 }
+/*For name of product in shopping cart */
+.product-cart-name{
+	text-decoration:none;
+	color:black;
+}
+.product-cart-name:hover{
+	text-decoration:underline;
+}
+/*Delete button in shopping cart*/
 .cart-del-btn{
-	outline:none;
-	border:none;
-	color:#fff;
-	background:#ff5959;
-	padding:8px 10px;
-	border-radius:4px;
-	margin-left:10px;
+        outline:none;
+        border:none;
+        color:#fff;
+        background:#ff5959;
+        padding:8px 10px;
+        border-radius:4px;
+        margin-left:10px;
 }
 .cart-price .cart-last-price{
-	color:#ff5959;
-	font-weight: bold;
-	font-size:1.2em;
+        color:#ff5959;
+        font-weight: bold;
+        font-size:1.2em;
 }
 .cart-price .cart-first-price{
         text-decoration:line-through;
@@ -44,22 +53,22 @@
 }
 /*For increase and decrease quantity button zone*/
 .change-quantity-btn{
-	border:1px solid #9F9C9C;
-	outline:none;
-	background:#fff;
+        border:1px solid #9F9C9C;
+        outline:none;
+        background:#fff;
         padding:2px 8px;
 
 }
 .quantity-btn-group{
-	margin-left:8px;
+        margin-left:8px;
 }
 .sub-quantity{
-	border-right:none;
+        border-right:none;
         border-radius:4px 0 0 4px;
 }
 .add-quantity{
-	border-left:none;
-	border-radius:0 4px 4px 0;
+        border-left:none;
+        border-radius:0 4px 4px 0;
 }
 .pay-box{
         width:20%;

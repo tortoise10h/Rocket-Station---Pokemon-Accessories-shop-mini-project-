@@ -246,7 +246,7 @@ function saveProduct(productId){
                     price: productFirstPrice,
                     lastPrice: productLastPrice,
                     user: productOfUser
-                }
+                };
 
 
                 //check exists of product in cart array
@@ -625,6 +625,8 @@ function defaultProductPageLayout(){
     '</div>' + //end of product-container
     '<div class="description">' +
     '<div class="warning">' +
+    "<h1>Chú ý:</h1>" +
+    "<p>Sản phẩm được phép đổi trả miễn phí trong vòng 7 ngày sau khi mua hàng nếu do lỗi đến từ nhà sản xuất.</p>"
     '</div>' +
     '</div>';
     return defaultLayout;
