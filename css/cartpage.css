@@ -1,13 +1,16 @@
+/*For shopping cart title*/
 #shopping-cart-zone h1{
 	padding:0 0.5em;
 	font-size:2em;
 }
+/*For product in shopping cart*/
 #user-product-zone{
 	display:flex;
 }
 .cart-list-zone{
 	width:80%;
 }
+/*Each product in shopping cart*/
 .product-cart-box{
 	display:grid;
 	grid-template-columns:1fr 3fr 1fr 1fr;
@@ -36,42 +39,63 @@
 	font-size:1.2em;
 }
 .cart-price .cart-first-price{
-	text-decoration:line-through;
-	color: #706F6F;
+        text-decoration:line-through;
+        color: #706F6F;
+}
+/*For increase and decrease quantity button zone*/
+.change-quantity-btn{
+	border:1px solid #9F9C9C;
+	outline:none;
+	background:#fff;
+        padding:2px 8px;
+
+}
+.quantity-btn-group{
+	margin-left:8px;
+}
+.sub-quantity{
+	border-right:none;
+        border-radius:4px 0 0 4px;
+}
+.add-quantity{
+	border-left:none;
+	border-radius:0 4px 4px 0;
 }
 .pay-box{
-	width:20%;
+        width:20%;
+}
+/*Pay box on the right*/
+.pay-box-btn{
+        text-align:center;
 }
 .total-price{
-	display:flex;
-	justify-content: space-between;
-	padding:1em;
-	background:#fff;
-	border-radius:4px;
-	margin:5px;
-	box-shadow:2px 3px 8px rgba(0,0,0,0.24);
+        display:flex;
+        justify-content: space-between;
+        padding:1em;
+        background:#fff;
+        border-radius:4px;
+        margin:5px;
+        box-shadow:2px 3px 8px rgba(0,0,0,0.24);
 }
 .total-price .left-price{
-	margin-top:8px;
+        margin-top:8px;
 }
 .total-price .right-price{
-	color:#ff5959;
-	font-weight:bold;
-	font-size:1.5em;
-}
-.pay-box-btn{
-	text-align:center;
+        color:#ff5959;
+        font-weight:bold;
+        font-size:1.5em;
 }
 .order-btn{
-	border:none;
-	outline:none;
-	background:#FC7171;
-	padding:1em 1.2em;
-	color:#fff;
-	width:96%;
-	border-radius:4px;
-	box-shadow:2px 3px 6px rgba(0,0,0,0.24);	
+        border:none;
+        outline:none;
+        background:#FC7171;
+        padding:1em 1.2em;
+        color:#fff;
+        width:96%;
+        border-radius:4px;
+        box-shadow:2px 3px 6px rgba(0,0,0,0.24);      
+        font-weight:bold;  
 }
 .order-btn:hover{
-	background:#ff5959;
+        background:#ff5959;
 }

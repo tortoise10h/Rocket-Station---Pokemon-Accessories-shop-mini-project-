@@ -222,6 +222,7 @@ function saveProduct(productId){
                 let productQuantity;
                 let productFirstPrice;
                 let productLastPrice;
+                let productOfUser;
                 //get product infomation
                 //find product out
                 for(let i = 0; i < productArr.length; i++){
@@ -231,6 +232,7 @@ function saveProduct(productId){
                         productName = productArr[i].name;
                         productFirstPrice = productArr[i].firstPrice;
                         productLastPrice = productArr[i].fixPrice;
+                        productOfUser = check.currentUsername;
                         productQuantity = 1;
                         break;
                     }
@@ -242,7 +244,8 @@ function saveProduct(productId){
                     name: productName,
                     quantity: productQuantity,
                     price: productFirstPrice,
-                    lastPrice: productLastPrice
+                    lastPrice: productLastPrice,
+                    user: productOfUser
                 }
 
 
@@ -534,6 +537,7 @@ function saveProduct2(productId){
         let productQuantity;
         let productFirstPrice;
         let productLastPrice;
+        let productOfUser;
         //get product infomation
         //find product out
         for(let i = 0; i < productArr.length; i++){
@@ -543,6 +547,7 @@ function saveProduct2(productId){
                 productName = productArr[i].name;
                 productFirstPrice = productArr[i].firstPrice;
                 productLastPrice = productArr[i].fixPrice;
+                productOfUser = check.currentUsername;
                 break;
             }
         }
@@ -557,7 +562,8 @@ function saveProduct2(productId){
             name: productName,
             quantity: productQuantity,
             price: productFirstPrice,
-            lastPrice: productLastPrice
+            lastPrice: productLastPrice,
+            user: productOfUser
         }
 
 
