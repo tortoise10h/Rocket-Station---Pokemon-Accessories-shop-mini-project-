@@ -3,6 +3,14 @@ let urlPara = url.split("?");
 function createShoppingCart(){
     if(urlPara[1] === "cart"){
         let check = JSON.parse(localStorage.getItem('check'));
+        if(check === null){
+            mainZone.innerHTML = "<section id='shopping-cart-zone'>" +
+            "<h1> Giỏ hàng </h1>" +
+            "<hr style='border:2px solid black;margin:0 0.5em 0.2em'>" +
+            "<h1 class='login-alert'>Bạn chưa đăng nhập tài khoản!!!</h1>"
+            "</section>";
+            return false;
+        }
         //have to login to see shopping cart (obviously:)) )
         if(check.isLogin === true){
             slideZone.style.display = "none";
