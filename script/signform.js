@@ -98,12 +98,23 @@ function saveAccount(){
     }else{
         //get accounts array from local storage
         let accounts = JSON.parse(localStorage.getItem('accounts'));
-        //add new account to accounts array
-        accounts.push(account);
-        //push accounts array back to local storage
-        localStorage.setItem('accounts', JSON.stringify(accounts));
-        alert("Chúc mừng bạn đã đăng ký tài khoản thành công, Mời đăng nhập và trải nghiệm mua hàng cùng chúng tôi!!!");
-        window.location.reload();
+        //check duplicate user
+        let checkExistsUser = true;
+        for(let i = 0; i < accounts.length; i++){
+            if(accounts[i].username == account.username){
+                checkExistsUser = false;
+            }
+        }
+        if(checkExistsUser == false){
+            alert("Tên tài khoản đã có người sử dụng!!!");
+        }else{
+            //add new account to accounts array
+            accounts.push(account);
+            //push accounts array back to local storage
+            localStorage.setItem('accounts', JSON.stringify(accounts));
+            alert("Chúc mừng bạn đã đăng ký tài khoản thành công, Mời đăng nhập và trải nghiệm mua hàng cùng chúng tôi!!!");
+            window.location.reload();
+        }
     }
 
 }

@@ -1,0 +1,51 @@
+#order-list-zone{
+}
+/*For order page title*/
+.order-list-title{
+	font-size:2em;
+	margin-left:10px;
+}
+/**FOR EACH ORDER IN ORDER PAGE**/
+.order-box{
+	border-radius:5px;
+	padding:1em 0.5em;
+	background:#fff;
+	margin:0 1em 0.5em;
+}
+/*For order detail*/
+.order-name{
+	font-size:1.5em;
+	padding-bottom:0.5em;
+	font-weight:bold;
+}
+.order-date span{
+	font-weight:bold;
+}
+.order-price span{
+	font-weight:bold;
+}
+/*For Each Product In Each Order*/
+.order-product{
+	padding:1em;
+	border-radius:5px;
+	display:grid;
+	grid-template-columns: 1fr 3fr 1fr 1fr;
+	align-items:center;
+}
+/*For each product image*/
+.order-product-img img{
+	width:120px;
+	height:120px;
+}
+/*For each product name*/
+.order-product-name a{
+	text-decoration: none;
+	color:black;
+}
+.order-product-name a:hover{
+	text-decoration: underline;
+}
+/*For each product price*/
+.order-product-price span{
+
+}

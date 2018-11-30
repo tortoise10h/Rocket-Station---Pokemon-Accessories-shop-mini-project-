@@ -7,12 +7,16 @@ html,body{
     padding:0;
     line-height: 1.5;
     font-family: sans-serif;
+    min-width:1280px;
 }
 .icon{
     margin-right:0.4em;
 }
 .highlight{
     color:#ff5959;
+}
+.highlight2{
+    color:#00336f;
 }
 .face-contact:hover{
     color:#2626E9;
@@ -80,6 +84,11 @@ html,body{
 }
 .sign-btn:hover{
   border-bottom:1px solid black;
+}
+/*for username tag*/
+#user-profile a, #oder-list a{
+  text-decoration:none;
+  color:black;
 }
 /*Search zone*/
 .search-zone{
@@ -219,16 +228,17 @@ html,body{
     color:#ff5959;
 }
 /**Main section***/
+#main-id{
+  padding-bottom:2.5em;
+}
 /*Section 1*/
 .slideshow{
     position:relative;
-
 }
 .slide img{
     width:100%;
     max-height:300px;
     object-fit: cover;
-
 }
 /*left & right arrow*/
 .pre-btn, .next-btn{

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/signform.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/cartpage.css">
+    <link rel="stylesheet" href="../css/orderlist.css">
     <link rel="stylesheet" href="../css/style.css">     
 </head>
 <body class="rocket-home">  
@@ -30,7 +31,7 @@
             <div class="core-list">
                 <ul>
                     <li id="sign-zone"><button class="sign-btn" id="sign-up-btn">Đăng ký</button> &#8739;<button id="sign-in-btn" class="sign-btn">Đăng nhập</button></li>
-                    <li class="user-category" id="user-profile"><i class="fas fa-user-alt"></i>Tài khoản</li>
+                    <li class="user-category" id="user-profile"><a href="index.html?user"><i class="fas fa-user-alt"></i><span id="username-display"></span></a></li>
                     <div class="sign-box" id="sign-up-box">
                         <span class="close" id="close-sign-up">&times;</span>
                         <form class="zoom" name="sign-up-form" id="sign-up-form" method="POST">
@@ -75,7 +76,7 @@
                         </form>
                     </div>
                     <li><i class="fas fa-bell"></i>Thông báo</li>
-                    <li class="user-category"><i class="fas fa-book-open"></i> Quản lý đơn hàng</li>
+                    <li id="oder-list" class="user-category"><a href="index.html?orderlist"><i class="fas fa-book-open"></i> Quản lý đơn hàng</a></li>
                     <li class="user-category"><i class="icon fas fa-sign-out-alt"></i></i></i>Đăng xuất</li>
                     <li id="admin-page" class="user-category"><i class="fas fa-user-secret"></i> Admin</li>
                 </ul>
@@ -199,4 +200,6 @@
     <script src="../script/signform.js"></script>
     <script src="../script/cartpage.js"></script>
     <script src="../script/adminpage.js"></script>
+    <script src="../script/userpage.js"></script>
+    <script src="../script/orderlist.js"></script>
 </body>

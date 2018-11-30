@@ -684,14 +684,13 @@ function logout(){
 }
 //display user name when login
 function displayUser(){
-    let userTag = document.getElementById('user-profile');
+    let usernameTag = document.getElementById('username-display');
     let check  = JSON.parse(localStorage.getItem('check'));
     if(check !== null){
         let userLogin = check.currentUsername;
         let loginCheck = check.isLogin;
         if(loginCheck == true){
-            let text =  "<i class='fas fa-user-alt'></i>" + userLogin;
-            userTag.innerHTML = text;
+            usernameTag.innerHTML = userLogin;
         }
     }
 }
@@ -703,4 +702,5 @@ window.onload = function(){
     getProduct();
     sortByFixPrice();
     createShoppingCart();
+    createOrderListPage();
 }

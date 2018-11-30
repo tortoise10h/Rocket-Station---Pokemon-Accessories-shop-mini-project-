@@ -29,7 +29,7 @@ function createShoppingCart(){
                 for(let i = 0; i < productCartArr.length; i++){
                 //if user login match with their product in product cart array
                 if(check.currentUsername === productCartArr[i].user){
-        		let detailPageUrl = "index.html?" + productCartArr[i].prodId.substr(0,3) + "#" + productCartArr[i].prodId;
+                        let detailPageUrl = "index.html?" + productCartArr[i].prodId.substr(0,3) + "#" + productCartArr[i].prodId;
                         totalPrice += parseInt(productCartArr[i].lastPrice) * parseInt(productCartArr[i].quantity);
                         //create list of product in shopping cart
                         cartList += "<div class='product-cart-box'>" +
@@ -96,8 +96,8 @@ function createShoppingCart(){
         deleteCartProduct();
         //for pay product in shopping cart
         let payBtn = document.getElementsByClassName('order-btn');
-    	payBtn[0].addEventListener('click', function(){
-        	payCart(check.currentUsername);
+        payBtn[0].addEventListener('click', function(){
+                payCart(check.currentUsername);
         });
     }
 }
@@ -180,14 +180,14 @@ function decreaseQuantity(productId){
 function payCart(username){
     let payConfirm = window.confirm("Bạn có muốn đặt hàng các sản phẩm trong giỏ không?");
     if(payConfirm){
-    	//Get date time when user pays the cart
-    	let thisDate = new Date();
-    	let thisYear = thisDate.getFullYear().toString();
-    	let thisMonth = (thisDate.getMonth() + 1).toString();
-    	let thisDay = thisDate.getDate().toString();
-    	let thisHours = thisDate.getHours().toString();
-    	let thisMinutes = thisDate.getMinutes().toString();
-    	let thisSeconds = thisDate.getSeconds().toString();
+        //Get date time when user pays the cart
+        let thisDate = new Date();
+        let thisYear = thisDate.getFullYear().toString();
+        let thisMonth = (thisDate.getMonth() + 1).toString();
+        let thisDay = thisDate.getDate().toString();
+        let thisHours = thisDate.getHours().toString();
+        let thisMinutes = thisDate.getMinutes().toString();
+        let thisSeconds = thisDate.getSeconds().toString();
         //handle length of those day time if its length = 1, for ex thisSeconds = 7 => 07
         if(thisMonth.length < 2){
                 thisMonth = "0" + thisMonth;
@@ -212,7 +212,7 @@ function payCart(username){
         payDate += thisDay + thisMonth + thisYear;
         let payTime = "";
         payTime +=  thisHours + thisMinutes + thisSeconds;
-        let orderId = thisDay + thisSeconds + thisMonth + thisMinutes + thisYear + thisHours;
+        let orderId = thisDay + thisSeconds + thisMonth + thisMinutes + thisYear.substr(2,2) + thisHours;
         let orderProductList = [];
         
         
@@ -226,8 +226,10 @@ function payCart(username){
                 let productPrice = productCartArr[i].lastPrice;
                 let productQuantity = productCartArr[i].quantity;
                 let productImage = productCartArr[i].imgLink;
+                let productId = productCartArr[i].prodId;
                 //orderProduct object
                 var orderProduct = {
+                    prodId: productId,
                     name: productName,
                     price: productPrice,
                     quantity: productQuantity,
@@ -266,6 +268,6 @@ function payCart(username){
         //set productCartArr back to local storage
         localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
         window.location.reload();
-    	alert("Đặt hàng thành công!!!");
+        alert("Đặt hàng thành công!!!");
     }
 }
