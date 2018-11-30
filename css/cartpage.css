@@ -26,11 +26,11 @@
 }
 /*For name of product in shopping cart */
 .product-cart-name{
-	text-decoration:none;
-	color:black;
+        text-decoration:none;
+        color:black;
 }
 .product-cart-name:hover{
-	text-decoration:underline;
+        text-decoration:underline;
 }
 /*Delete button in shopping cart*/
 .cart-del-btn{
