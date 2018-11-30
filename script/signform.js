@@ -16,39 +16,31 @@ signInBtn.addEventListener('click', openSignInBox);
 closeSigninBtn.addEventListener('click', hideSignInBox);
 cancelSigninBtn.addEventListener('click', hideSignInBox);
 
-//get related zone
-let searchZone = document.getElementById('search-zone');
-
-let slide = document.getElementById('slide-zone');
-
-let navZone = document.getElementById('nav-id');
-
-
 
 function openSignUpBox(){
     signUpBox.style.display = "block";
-    searchZone.style.display = "none";
-    slide.style.display = "none";
-    navZone.style.display = "none";
+    // searchZone.style.display = "none";
+    // slide.style.display = "none";
+    // navZone.style.display = "none";
 }
 function hideSignUpBox(){
     signUpBox.style.display = "none";
-    searchZone.style.display = "grid";
-    slide.style.display = "block";
-    navZone.style.display = "grid";
+    // searchZone.style.display = "grid";
+    // slide.style.display = "block";
+    // navZone.style.display = "grid";
 }
 
 function openSignInBox(){
     signInBox.style.display = "block";
-    searchZone.style.display = "none";
-    slide.style.display = "none";
-    navZone.style.display = "none";
+    // searchZone.style.display = "none";
+    // slide.style.display = "none";
+    // navZone.style.display = "none";
 }
 function hideSignInBox(){
     signInBox.style.display = "none";
-    searchZone.style.display = "grid";
-    slide.style.display = "block";
-    navZone.style.display = "grid";
+    // searchZone.style.display = "grid";
+    // slide.style.display = "block";
+    // navZone.style.display = "grid";
 }
 /**SIGN UP ACCOUNT**/
 //Get submit form sign up box
