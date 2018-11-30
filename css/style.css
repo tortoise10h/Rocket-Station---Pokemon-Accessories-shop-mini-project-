@@ -30,6 +30,13 @@ html,body{
 .insta-contact:hover{
     color:#DD31A2;
 }
+.login-alert{
+  background:rgba(248,37,37,0.7);
+  border-left:rgb(248,37,37);
+  padding:0.8em 1.2em;
+  font-weight:bold;
+  margin:0 0.2em;
+}
 /**Header**/
 #header-id{
     width:100%;
