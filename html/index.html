@@ -30,34 +30,43 @@
             </div>
             <div class="core-list">
                 <ul>
-                    <li id="sign-zone"><button class="sign-btn" id="sign-up-btn">Đăng ký</button> &#8739;<button id="sign-in-btn" class="sign-btn">Đăng nhập</button></li>
+                    <li id="sign-zone"><button type="button" class="sign-btn" id="sign-up-btn">Đăng ký</button> &#8739;<button type="button" id="sign-in-btn" class="sign-btn">Đăng nhập</button></li>
                     <li class="user-category" id="user-profile"><a href="index.html?user"><i class="fas fa-user-alt"></i><span id="username-display"></span></a></li>
-                    <div class="sign-box" id="sign-up-box">
-                        <span class="close" id="close-sign-up">&times;</span>
-                        <form class="zoom" name="sign-up-form" id="sign-up-form" method="POST">
-                            <div>
-                                <h1>Đăng ký tài khoản</h1>
-                                <p>Hãy nhập đầy đủ thông tin yêu cầu dưới đây để tạo cho bạn một tài khoản</p>
-                                <hr>
-                                <label for="email"><b>Tài khoản / Email</b><i style="font-size:14px;padding-left:5px">(Tối thiểu 5 ký tự)</i></label>
-                                <input type="text" placeholder="Email" name="email">
+                    <li><i class="fas fa-bell"></i>Thông báo</li>
+                    <li id="oder-list" class="user-category"><a href="index.html?orderlist"><i class="fas fa-book-open"></i> Quản lý đơn hàng</a></li>
+                    <li class="user-category"><i class="icon fas fa-sign-out-alt"></i></i></i>Đăng xuất</li>
+                    <li id="admin-page" class="user-category"><i class="fas fa-user-secret"></i> Admin</li>
+                </ul>
+            </div>
+        </div>
+        <div id="sign-up-box" class="sign-box">
+            <form class="zoom" name="sign-up-form" id="sign-up-form" method="POST">
+                <span class="close" id="close-sign-up">&times;</span>
+                
+                <h1>Đăng ký tài khoản</h1>
+                <p>Hãy nhập đầy đủ thông tin yêu cầu dưới đây để tạo cho bạn một tài khoản</p>
+                <hr>
+                <div>
+                <label for="email"><b>Tài khoản / Email</b><i style="font-size:14px;padding-left:5px">(Tối thiểu 5 ký tự)</i></label>
+                <input type="text" placeholder="Email" name="email">
 
-                                <label for="psw"><b>Mật khẩu</b></label>
-                                <input type="password" placeholder="Mật khẩu" name="psw">
+                <label for="psw"><b>Mật khẩu</b></label>
+                <input type="password" placeholder="Mật khẩu" name="psw">
 
-                                <label for="psw-repeat"><b>Nhập lại mật khẩu</b></label>
-                                <input type="password" placeholder="Nhập lại mật khẩu" name="psw-repeat">
+                <label for="psw-repeat"><b>Nhập lại mật khẩu</b></label>
+                <input type="password" placeholder="Nhập lại mật khẩu" name="psw-repeat">
 
-                                <label>
-                                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Đồng ý điều khoản
-                                </label>
-                                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-                                <div class="clearfix">
-                                    <button id="cancel-sign-up" class="cancel-btn">Cancel</button>
-                                    <input type="button" name="sign-up-submit" value="Sign up">
-                                </div>
-                            </div>
-                        </form>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Đồng ý điều khoản
+                </label>
+                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+                </div>
+                <div class="clearfix">
+                    <button id="cancel-sign-up" class="cancel-btn">Trở về</button>
+                    <input type="button" name="sign-up-submit" value="Đăng ký">
+                </div>
+                
+            </form>
                     </div>
                     <div class="sign-box" id="sign-in-box">
                         <span class="close" id="close-sign-in">&times;</span>
@@ -70,18 +79,11 @@
                             <label for="psw"><b>Mật khẩu</b></label>
                             <input type="password" placeholder="Mật khẩu" name="psw">
                             <div class="clearfix">
-                                <button id="cancel-sign-in" class="cancel-btn">Cancel</button>
-                                <input type="button" name="sign-in-submit" value="Sign In">
+                                <button id="cancel-sign-in" class="cancel-btn">Trở về</button>
+                                <input type="button" name="sign-in-submit" value="Đăng nhập">
                             </div>
                         </form>
                     </div>
-                    <li><i class="fas fa-bell"></i>Thông báo</li>
-                    <li id="oder-list" class="user-category"><a href="index.html?orderlist"><i class="fas fa-book-open"></i> Quản lý đơn hàng</a></li>
-                    <li class="user-category"><i class="icon fas fa-sign-out-alt"></i></i></i>Đăng xuất</li>
-                    <li id="admin-page" class="user-category"><i class="fas fa-user-secret"></i> Admin</li>
-                </ul>
-            </div>
-        </div>
         <div id="search-zone" class="search-zone">
             <div class="web-logo">
                 <a href="index.html"> <img src="../rocket station logo.png"></a>
