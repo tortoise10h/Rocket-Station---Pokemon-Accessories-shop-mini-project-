@@ -7,7 +7,7 @@ function createShoppingCart(){
             mainZone.innerHTML = "<section id='shopping-cart-zone'>" +
             "<h1> Giỏ hàng </h1>" +
             "<hr style='border:2px solid black;margin:0 0.5em 0.2em'>" +
-            "<h1 class='login-alert'>Bạn chưa đăng nhập tài khoản!!!</h1>"
+            "<h1 class='not-found-alert'>Bạn chưa đăng nhập tài khoản!!!</h1>"
             "</section>";
             return false;
         }

@@ -30,7 +30,7 @@ html,body{
 .insta-contact:hover{
     color:#DD31A2;
 }
-.login-alert{
+.not-found-alert{
   background:rgba(248,37,37,0.7);
   border-left:rgb(248,37,37);
   padding:0.8em 1.2em;
@@ -100,7 +100,7 @@ html,body{
 /*Search zone*/
 .search-zone{
     display:grid;
-    grid-template-columns:1fr 4fr 1fr;
+    grid-template-columns:1fr 3fr 1fr;
     align-items:center;
     justify-content: start;
 }
@@ -116,17 +116,6 @@ html,body{
 .search-box{
     padding:0 1em;
 }
-.search-box select{
-    padding:9px;
-    border:none;
-    border-radius:25px 0 0 25px;
-    font-size:17px;
-    float:left;
-    background:#fff;
-    border-right:1px solid #CBCACA;
-    box-shadow:2px 3px 6px rgba(0,0,0,0.12);
-    outline:none;
-}
 .search-box input[type="text"]{
     width:32em;
     padding:9.5px 30px 9.5px 16px;
@@ -135,6 +124,7 @@ html,body{
     float:left;
     outline:none;
     box-shadow:2px 3px 6px rgba(0,0,0,0.12);
+    border-radius:25px 0 0 25px;
 }
 .btn-1{
     background:#ff5959;
@@ -150,6 +140,8 @@ html,body{
     font-size:17px;
     transform:translate(-20px,0);
     box-shadow:2px 3px 6px rgba(0,0,0,0.36);
+    text-align: center;
+    text-decoration: none;
 }
 .btn-1 span{
     cursor:pointer;
@@ -244,8 +236,8 @@ html,body{
 }
 .slide img{
     width:100%;
-    max-height:300px;
-    object-fit: cover;
+    max-height:350px;
+    object-fit: fill;
 }
 /*left & right arrow*/
 .pre-btn, .next-btn{

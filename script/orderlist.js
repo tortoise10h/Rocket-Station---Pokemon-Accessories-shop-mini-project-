@@ -24,7 +24,7 @@ function createOrderListPage(){
             }else{
                 //loop for order list
                 let isOrderEmpty = true;
-                for(let i = 0; i < orderArr.length; i++){
+                for(let i = orderArr.length - 1; i >= 0; i--){
                         if(check.currentUsername === orderArr[i].user){
                                 isOrderEmpty = false;
                                 orderList += "<div class='order-box'>" +
