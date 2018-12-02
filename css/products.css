@@ -2,17 +2,18 @@
   height: 450px;
   overflow: auto;
 }
-.tbl-searchbar {
+.tbl-searchbar , .account-search{
   text-align: center;
   padding: 10px;
 }
-.tbl-searchbar input, .tbl-searchbar select {
+.tbl-searchbar input, .tbl-searchbar select , #account-filter select{
   border: 1px solid #c4c4c4;
   border-radius: 5px;
   background-color: #fff;
   padding: 3px 5px;
   box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
   height: 30px;
+  outline:none;
 }
 .table {
   width: 90%;

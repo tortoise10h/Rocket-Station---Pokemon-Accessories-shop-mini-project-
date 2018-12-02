@@ -2,7 +2,6 @@
 /**CATEGORY PAGINATION**/
 let mainZone = document.getElementById('main-id');  //get main tag for display
 let url = window.location.href; //this is.... url
-url = decodeURIComponent(url);
 function urlHandle(){
     let checkHomePage = false;
     if(url.indexOf("?") < 0){
@@ -101,35 +100,42 @@ function urlHandle(){
         }
 
     }else{
-        let urlParams = url.split("?"); 
+        let urlParams = url.split("?");
         let categoryUrl = urlParams[1];
         categoryUrl = categoryUrl.split('&');
-        let position = categoryUrl[1];
+        let position;
+        if(categoryUrl.length == 2){
+            position = categoryUrl[1];
+        }else{
+            position = categoryUrl[1] + "&" +categoryUrl[2];
+        }
+        console.log("position " + position);
         switch(categoryUrl[0]){
 
             case 'hat' :{
-                addLeftMenu();
+                addLeftMenu(categoryUrl[0]);
                 addProductDisplayZone(position,hatList, categoryUrl[0], urlParams[0]);
                 break;
             }
             case 'shi' :{
-                addLeftMenu();
+                addLeftMenu(categoryUrl[0]);
                 addProductDisplayZone(position,shirtList, categoryUrl[0], urlParams[0]);
                 break;
             }
             case 'plu' :{
-                addLeftMenu();
+                addLeftMenu(categoryUrl[0]);
                 addProductDisplayZone(position,plushList, categoryUrl[0], urlParams[0]);
                 break;
             }
             case 'fig' :{
-                addLeftMenu();
+                addLeftMenu(categoryUrl[0]);
                 addProductDisplayZone(position,figureList, categoryUrl[0], urlParams[0]);
                 break;
             }
 
         }
     }
+    
 }
 //Save product to shopping cart
 function saveProduct(productId){
@@ -220,7 +226,7 @@ function checkProductQuantity(productId, productCartArr){
     }
     return endQuantity;
 }
-function addLeftMenu(){
+function addLeftMenu(categoryUrl){
 
     /*CREATE LEFT MENU*/
     let leftMenu = document.createElement('div');
@@ -233,7 +239,7 @@ function addLeftMenu(){
     filterZone.className = "filter";
     leftMenu.appendChild(filterZone);
     
-    document.querySelector('.filter').appendChild(filterList());
+    document.querySelector('.filter').innerHTML = filterList(categoryUrl);
 }
 
 function addSearchInpage(){
@@ -250,43 +256,14 @@ function addSearchInpage(){
     searchZone.appendChild(searchForm);
     return searchZone;
 }
-function filterList(){
-    let text = document.createElement('ul');
-
-    let li1 = document.createElement('li');
-    li1.id = 'asc-price';
-    li1.appendChild(document.createTextNode('Giá từ thấp đến cao'));
-    text.appendChild(li1);
-
-    let li2 = document.createElement('li');
-    li2.id = 'des-price';
-    li2.appendChild(document.createTextNode('Giá từ cao đến thấp'));
-    text.appendChild(li2);
-
-    let li3 = document.createElement('li');
-    li3.id = 'fire-ele';
-    li3.appendChild(document.createTextNode('Hệ lửa'));
-    text.appendChild(li3);
-
-    let li4 = document.createElement('li');
-    li4.id = 'elec-ele';
-    li4.appendChild(document.createTextNode('Hệ điện'));
-    text.appendChild(li4);
-
-    let li5 = document.createElement('li');
-    li5.id = 'water-ele';
-    li5.appendChild(document.createTextNode('Hệ nước'));
-    text.appendChild(li5);
-
-    let li6 = document.createElement('li');
-    li6.id = 'grass-ele';
-    li6.appendChild(document.createTextNode('Hệ cây'));
-    text.appendChild(li6);
-
-    let li7 = document.createElement('li');
-    li7.id = 'rock-ele';
-    li7.appendChild(document.createTextNode('Hệ đá'));
-    text.appendChild(li7);
+function filterList(categoryUrl){
+    let text = '<ul>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'blue&0">xanh</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'red&0">đỏ</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'violet&0">tím</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'yellow&0">vàng</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'white&0">trắng</a></li>' +
+    '</ul>';
     return text;
 }   
 
@@ -314,8 +291,21 @@ function addProductDisplayZone(position,productList,categoryUrl,baseUrl){
     
 }
 function addProduct(position,productList,categoryUrl,baseUrl){
-    let count = 0;
     let productText = "<div class='products'>";
+    if(!isNaN(position)){
+        productText += normalCategoryProduct(productList,position,categoryUrl,baseUrl);
+        console.log("normal here");
+    }else{
+        console.log("color here");
+        productText += colorCategoryProduct(productList,position,categoryUrl,baseUrl);
+    }
+    productText += "</div>";
+    return productText;
+}
+
+function normalCategoryProduct(productList, position, categoryUrl, baseUrl){
+    let productText = "";
+    let count = 0;
     for(let i = position; i < productList.length; i++){
         count++;
         let productLink = baseUrl + "?"  + categoryUrl + "#" + productList[i].id;
@@ -339,33 +329,85 @@ function addProduct(position,productList,categoryUrl,baseUrl){
             break;
         }
     }
-    productText += "</div>";
     return productText;
 }
+
+let colorPageIndex = 0;
+
+function colorCategoryProduct(productList,position,categoryUrl,baseUrl){
+    let productText = "";
+    let count = 0;
+    console.log("position " + position);
+    let eleUrl = position.split("&");
+    for(let i = eleUrl[1]; i < productList.length; i++){
+        console.log("product " + productList[i].color);
+        console.log("ele " + eleUrl[0]);  
+        if(productList[i].color == eleUrl[0] && productList[i].id.substr(0,3) == categoryUrl){
+
+            colorPageIndex++;
+            count++;
+            let productLink = baseUrl + "?"  + categoryUrl + "#" + productList[i].id;
+            productText += "<div class='product'>" +
+            "<div class='product-img'>"+
+            "<a href='" + productLink + "' target='_blank'>" + 
+            "<img src='" + productList[i].imgLink + "' alt='" + productList[i].alternateText + "'>" +
+            "</a>"+
+            "</div>" +
+            "<hr>" +
+            "<div class='product-name'>"+
+            "<a href='#' target='_blank'>" +
+            "<p>" + productList[i].name + "</p>" +
+            "</a>"+
+            "</div>" +
+            "<div class='product-price'>" +
+            "<p>"  + "<span class='fix-price-highlight'>" + productList[i].fixPrice + "₫" + "</span>" + "<span class='price-deco'>" + productList[i].firstPrice + "₫" + "</span>"  +"</p>" +
+            "</div>"+
+            '</div>';
+            if(count == 8){
+                break;
+            }
+        }
+    }
+    return productText;
+}
+
 function addPagination(productList, position,displayZone){
     //take product id
         //take product filter
         let filter = productList[0].id;
         let filterId = filter.substr(0,3);
     //create pagination div
+    let colorUrl = position.split("&");
     let pagination = document.createElement('div');
     pagination.className = "pagination";
     displayZone.appendChild(pagination);
     //calculate length of given product list
     let numOfPage = Math.ceil(productList.length / 8);
+    let numOfColorPage = Math.ceil(colorPageIndex / 8);
     let pages = "";
     let pageIndex;
     //create pages
-    for(let i = 1; i <= numOfPage; i++){
-        pageIndex = (i-1)*8;
-        pages += "<a href='index.html?" + filterId + "&" + pageIndex + "'";
-        if(pageIndex == position){
-            pages += "class='active'>" + i + "</a>";
-        }else{
-            pages += ">" + i + "</a>";
+    if(!isNaN(position)){
+        for(let i = 1; i <= numOfPage; i++){
+            pageIndex = (i-1)*8;
+            pages += "<a href='index.html?" + filterId + "&" + pageIndex + "'";
+            if(pageIndex == position){
+                pages += "class='active'>" + i + "</a>";
+            }else{
+                pages += ">" + i + "</a>";
+            }
+        }
+    }else{
+        for(let i = 1; i <= numOfColorPage; i++){
+            pageIndex = (i-1)*8;
+            pages += "<a href='index.html?" + filterId + "&" + colorUrl[0] + "&" + pageIndex + "'";
+            if(pageIndex == position){
+                pages += "class='active'>" + i + "</a>";
+            }else{
+                pages += ">" + i + "</a>";
+            }
         }
     }
-
     document.querySelector('.pagination').innerHTML = pages;
 
 }

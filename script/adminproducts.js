@@ -1,4 +1,4 @@
-reloadArr();
+ reloadArr();
 
 function removeItem(n) {
   var temp = document.getElementsByClassName('tbl-content')[0];
@@ -26,8 +26,8 @@ function reloadArr() {
       '<td>' + productArr[i].firstPrice + '</td>' +
       '<td>' + productArr[i].fixPrice + '</td>' +
       '<td>' +
-        '<button onclick="editItem(' + i + ')">Sửa</button>' +  
-        '<button onclick="removeItem(' + i + ')">Xóa</button>' +
+        '<button class="table-btn" onclick="editItem(' + i + ')">Sửa</button>' +  
+        '<button class="table-btn" onclick="removeItem(' + i + ')">Xóa</button>' +
       '</td>' +
     '</tr>';
   }

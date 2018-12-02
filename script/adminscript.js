@@ -64,7 +64,7 @@ function homeLayout() {
             '<span>Đơn hàng</span>' +
           '</div>' +
           '<div class="number">' +
-            '<strong>5000</strong>' +
+            '<strong>5135</strong>' +
           '</div>' +
         '</div>' +
       '</div>' +
@@ -75,7 +75,7 @@ function homeLayout() {
             '<span>Khách hàng</span>' +
           '</div>' +
           '<div class="number">' +
-            '<strong>6000</strong>' +
+            '<strong>6254</strong>' +
         '  </div>' +
       '  </div>' +
     '  </div>' +
@@ -86,7 +86,7 @@ function homeLayout() {
         '    <span>Lượt truy cập</span>' +
         '  </div>' +
         '  <div class="number">' +
-        '    <strong>15000</strong>' +
+        '    <strong>15112</strong>' +
         '  </div>' +
       '  </div>' +
     '  </div>' +
@@ -169,11 +169,11 @@ function customerLayout() {
   '  </div>' +
   '  <div class="tbl-searchbar">' +
   '    <form>' +
-  '      <select id="filterType" onchange="showItem()">' +
-  '        <option value="0">Tìm theo tên tài khoản</option>' +
-  '        <option value="1">Tìm theo tên</option>' +
+  '      <select id="account-filter" onchange="accountSearch()">' +
+  '        <option value="2">Tìm theo tên tài khoản</option>' +
+  '        <option value="0">Tìm theo họ tên</option>' +
   '      </select>' +
-  '      <input type="text" id="tbl-searchbar" onkeyup="showItem()" placeholder="Search...">' +
+  '      <input type="text" id="user-search" placeholder="Tìm theo tên tài khoản">' +
     '  </form>' +
   '  </div>' +
   '</div>';

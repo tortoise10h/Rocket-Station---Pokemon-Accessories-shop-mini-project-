@@ -315,7 +315,7 @@ html,body{
     padding:0.5em;
 }
 .inpage-search input[type=text] {
-  width:95%;
+  width:100%;
   padding:1em;
 }
 
@@ -334,25 +334,28 @@ html,body{
 }
 
 .filter li{
-  margin: 5px 24px 5px 10px;
   background: #fff;
+  margin:5px 10px;
   border-radius: 5px;
+  padding:5px;
+  transition:0.3s;
+  cursor:pointer;
+}
+.filter li a{
+  text-decoration: none;
   text-decoration: none;
   font-size: 18px;
   padding: 5px 2px 5px 12px;
   color: #000;
-  border-radius: 5px;
-  display: block;
-  transition: 0.5s;
+  transition: 0.3s;
   cursor:pointer;
 }
-
-.filter li:hover {
-  background: #003a6f;
-  color: #fff;
-  
+.filter li:hover a{
+  color:#fff;
 }
-
+.filter li:hover{
+  background:#00336f;
+}
 .product-display-zone{
     width:80%;
     float:left;
