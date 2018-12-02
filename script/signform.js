@@ -53,11 +53,6 @@ function saveAccount(){
     let usernameRegis = document.forms["sign-up-form"]["email"].value;
     let passwordRegis = document.forms["sign-up-form"]["psw"].value;
     let repeatPasswordRegis = document.forms["sign-up-form"]["psw-repeat"].value;
-    //account object
-    var account = {
-        username: usernameRegis,
-        password: passwordRegis
-    };
     //check if input box was ignored
     if(usernameRegis === "" || passwordRegis === "" || repeatPasswordRegis === ""){
         alert("Vui lòng điền đầy đủ thông tin vào các trường bên dưới!!!");
@@ -78,6 +73,11 @@ function saveAccount(){
         alert("Mật khẩu và mật khẩu nhập lại phải giống nhau!!!");
         return false;
     }
+    //account object
+    var account = {
+        username: usernameRegis,
+        password: passwordRegis
+    };
     //check if accounts is null
     if(localStorage.getItem('accounts') === null){
         //init new account array
@@ -133,7 +133,11 @@ function checkLogin(){
                 currentUsername: accounts[i].username
             };
             localStorage.setItem('check', JSON.stringify(check2));
-            alert("Đăng nhập thành công, Xin chào " + '"' + usernameLogin + '" !!!');
+            if(usernameLogin === "ad"){
+                alert("Xin chào Admin!!!");
+            }else{
+                alert("Đăng nhập thành công, Xin chào " + '"' + usernameLogin + '" !!!');
+            }
             isAccountExists = true;
             window.location.reload();
         }

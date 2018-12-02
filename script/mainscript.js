@@ -592,9 +592,15 @@ function checkLoginStatus(){
     }
     if(loginCheck ==  true){
         signZone.style.display = "none";
-        userCategory[0].style.display = "inline-block";
-        userCategory[1].style.display = "inline-block";
-        userCategory[2].style.display = "inline-block";
+        //for check admin account
+        if(check.currentUsername === "ad"){
+            adminTag.style.display = "inline-block";
+            userCategory[2].style.display = "inline-block";
+        }else{
+            userCategory[0].style.display = "inline-block";
+            userCategory[1].style.display = "inline-block";
+            userCategory[2].style.display = "inline-block";
+        }
     }
 }
 userCategory[2].addEventListener('click',logout);
@@ -620,6 +626,7 @@ function displayUser(){
 }
 
 window.onload = function(){
+    autoCreateAdminAccount();
     autoNextSlide();
     checkLoginStatus();
     displayUser(); 

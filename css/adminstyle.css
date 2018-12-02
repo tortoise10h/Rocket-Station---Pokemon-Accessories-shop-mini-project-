@@ -1,0 +1,75 @@
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0;
+  overflow: hidden;
+  background: rgb(238,245,249);
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+hr {
+  margin: 0 10px;
+}
+#header {
+  overflow: hidden;
+  background: #2f333e;
+  color: #fff;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+}
+.sidenav {
+  height: 100%;
+  position: fixed;
+  width: 20%;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 5px 0 5px -5px #ddd;
+}
+.sidebar-header {
+  overflow: hidden;
+}
+.avatar {
+  width: 30%;
+  float: left;
+}
+.avatar img {
+  width: 80%;
+  border-radius: 50%;
+  margin: 20% 5% 20% 10%;
+}
+.title {
+  float: left;
+  padding-left: 10px;
+}
+.title p {
+  color: #aaa;
+}
+.sidebar-menu h4 {
+  font-variant: small-caps;
+  text-align: center;
+}
+.sidebar-menu ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar-menu a {
+  display: block;
+  padding: 20px 20px 20px 40px;
+  text-decoration: none;
+  color: #333333;
+  border-left: 4px solid #fff;
+  transition: 0.4s;
+}
+.sidebar-menu a.active, .sidebar-menu a:hover {
+  background: #ff7676;
+  color: #fff;
+  border-left: 4px solid #ff3636;
+}
+#section {
+  float: right;
+  width: 80%;
+  overflow: hidden;
+}
+#footer {
+  text-align: center;
+}
