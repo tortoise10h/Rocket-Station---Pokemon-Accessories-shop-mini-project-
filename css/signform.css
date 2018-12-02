@@ -10,8 +10,11 @@
 .close:hover{
         color:#ff5959;
 }
+.sign-box{
+    box-sizing:border-box;
+}
 /*Sign up form*/
-.sign-box input[type="text"] ,.sign-box input[type="password"]{
+.sign-box input[type="text"] ,.sign-box input[type="password"], .sign-box input[type="email"]{
         width:100%;
         padding: 15px;
         margin: 5px 0 22px 0;
@@ -19,9 +22,14 @@
         border: none;
         background: #f1f1f1;
 } 
-.sign-box input[type="text"]:focus ,.sign-box input[type="password"]:focus{
+.sign-box input[type="text"]:focus ,.sign-box input[type="password"]:focus , .sign-box input[type="email"]:focus{
         background:#ddd;
         outline:none;
+}
+.name-inp{
+    width:48%;
+    float:left;
+    margin:0 5px;
 }
 .clearfix:after{
         content: "";

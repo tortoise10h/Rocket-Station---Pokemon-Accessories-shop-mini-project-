@@ -4,17 +4,17 @@ function removeItem(n) {
   var temp = document.getElementsByClassName('tbl-content')[0];
   temp = temp.getElementsByTagName('tr');
   if (confirm('Bạn có muốn xóa?') == true) {
-    deleteArr(n);
+    deleteArr(n,productArr);
     reloadArr();
     showItem();
   }
 }
-function deleteArr(position) {
-  var arrLength = productArr.length;
+function deleteArr(position, arr) {
+  var arrLength = arr.length;
   for (var i=position; i<arrLength; i++) {
-    productArr[i] = productArr[i+1];
+    arr[i] = arr[i+1];
   }
-  productArr.pop();
+  arr.pop();
 }
 function reloadArr() {
   var arrLength = productArr.length;

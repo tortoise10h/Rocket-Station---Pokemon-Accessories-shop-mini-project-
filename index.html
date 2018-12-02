@@ -47,10 +47,28 @@
                 <p>Hãy nhập đầy đủ thông tin yêu cầu dưới đây để tạo cho bạn một tài khoản</p>
                 <hr>
                 <div>
-                <label for="email"><b>Tài khoản / Email</b><i style="font-size:14px;padding-left:5px">(Tối thiểu 5 ký tự)</i></label>
-                <input type="text" placeholder="Email" name="email">
 
-                <label for="psw"><b>Mật khẩu</b></label>
+                <div class='clearfix'></div>
+
+                <div class="name-inp">
+                    <label for="lastname"><b>Họ</b></label>
+                    <input type="text" placeholder="Họ" name="lastname">
+                </div>
+
+                <div class="name-inp">
+                    <label for="firstname"><b>Tên</b></label>
+                    <input type="text" placeholder="Tên" name="firstname">
+                </div>
+
+                <div class='clearfix'></div>
+
+                <label for="username"><b>Tài khoản</b><i style="font-size:14px;padding-left:5px">(Tối thiểu 5 ký tự)</i></label>
+                <input type="text" placeholder="Tài khoản" name="username">
+
+                <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="Email" name="email">
+
+                <label for="psw"><b>Mật khẩu</b><i style="font-size:14px;padding-left:5px">(Tối thiểu 5 ký tự)</i></label>
                 <input type="password" placeholder="Mật khẩu" name="psw">
 
                 <label for="psw-repeat"><b>Nhập lại mật khẩu</b></label>
@@ -194,6 +212,7 @@
     <script src = "script/productArr.js"></script>
     <script src = "script/mainscript.js"></script>
     <script src = "script/signform.js"></script>
+    <script src = "script/getaccounts.js"></script>
     <script src = "script/adminpage.js"></script>
     <script src = "script/cartpage.js"></script>
     <script src = "script/userpage.js"></script>

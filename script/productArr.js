@@ -217,7 +217,7 @@ productArr[67] = new products(
     'fig06', 'Amazing Figure', '460000', '330000', 'img/fig/fig06/fig06_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 productArr[68] = new products(
-    'fig07', 'Amazing Figure', '460000', '150000', '../img/fig/fig07/fig07_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
+    'fig07', 'Amazing Figure', '460000', '150000', 'img/fig/fig07/fig07_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 
     )
 productArr[69] = new products(
     'fig08', 'Amazing Figure', '460000', '330000', 'img/fig/fig08/fig08_1.jpg', 'co', 'Amazing Figure picture', 'Con xai duoc', 'van chua hu' 

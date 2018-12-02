@@ -19,28 +19,16 @@ cancelSigninBtn.addEventListener('click', hideSignInBox);
 
 function openSignUpBox(){
     signUpBox.style.display = "block";
-    // searchZone.style.display = "none";
-    // slide.style.display = "none";
-    // navZone.style.display = "none";
 }
 function hideSignUpBox(){
     signUpBox.style.display = "none";
-    // searchZone.style.display = "grid";
-    // slide.style.display = "block";
-    // navZone.style.display = "grid";
 }
 
 function openSignInBox(){
     signInBox.style.display = "block";
-    // searchZone.style.display = "none";
-    // slide.style.display = "none";
-    // navZone.style.display = "none";
 }
 function hideSignInBox(){
     signInBox.style.display = "none";
-    // searchZone.style.display = "grid";
-    // slide.style.display = "block";
-    // navZone.style.display = "grid";
 }
 /**SIGN UP ACCOUNT**/
 //Get submit form sign up box
@@ -50,11 +38,14 @@ let signUpSubmitBtn = document.forms["sign-up-form"]["sign-up-submit"];
 signUpSubmitBtn.addEventListener('click',saveAccount);
 //Get username and password to create new account from sign up from
 function saveAccount(){
-    let usernameRegis = document.forms["sign-up-form"]["email"].value;
+    let usernameRegis = document.forms["sign-up-form"]["username"].value;
     let passwordRegis = document.forms["sign-up-form"]["psw"].value;
     let repeatPasswordRegis = document.forms["sign-up-form"]["psw-repeat"].value;
+    let emailRegis = document.forms["sign-up-form"]["email"].value;
+    let lastnameRegis = document.forms["sign-up-form"]["lastname"].value;
+    let firstnameRegis = document.forms["sign-up-form"]["firstname"].value;
     //check if input box was ignored
-    if(usernameRegis === "" || passwordRegis === "" || repeatPasswordRegis === ""){
+    if(usernameRegis === "" || passwordRegis === "" || repeatPasswordRegis === "" || emailRegis === "" || lastnameRegis === "" || firstnameRegis === ""){
         alert("Vui lòng điền đầy đủ thông tin vào các trường bên dưới!!!");
         return false;
     }
@@ -73,9 +64,22 @@ function saveAccount(){
         alert("Mật khẩu và mật khẩu nhập lại phải giống nhau!!!");
         return false;
     }
+    //check min length of password
+    if(passwordRegis.length < 5){
+        alert("Mật khẩu phải có độ dài từ 5 kí tự trở lên để đảm bảo an toàn!!!");
+        return false;
+    }
+    //check valid email
+    if(emailRegis.indexOf("@gmail.com") < 0 && emailRegis.indexOf("@yahoo.com") < 0 && emailRegis.indexOf("@icloud.com") < 0 && emailRegis.indexOf("@email.com") < 0){
+        alert("Vui lòng điền vào form email HỢP LỆ!!!");
+        return false;
+    }
     //account object
     var account = {
+        ho:lastnameRegis,
+        ten: firstnameRegis,
         username: usernameRegis,
+        email: emailRegis,
         password: passwordRegis
     };
     //check if accounts is null

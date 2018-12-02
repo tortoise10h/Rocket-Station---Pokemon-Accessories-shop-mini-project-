@@ -152,7 +152,31 @@ function orderLayout() {
 }
 
 function customerLayout() {
-  document.getElementById('content').innerHTML = 'Nothing to show';
+  document.getElementById('content').innerHTML = '<div class="table shadow">' +
+  '  <div class="tbl-header">' +
+  '    <table class="bg-blue">' +
+  '      <tr>' +
+  '        <th>Họ Tên</th>' +
+  '        <th>Email</th>' +
+  '        <th>Tài khoản</th>' +
+  '        <th>Mật khẩu</th>' +
+  '        <th>Hành động</th>' +
+  '      </tr>' +
+  '    </table>' +
+  '  </div>' +
+  '  <div class="tbl-account">' +
+  '    <!-- table here -->' +
+  '  </div>' +
+  '  <div class="tbl-searchbar">' +
+  '    <form>' +
+  '      <select id="filterType" onchange="showItem()">' +
+  '        <option value="0">Tìm theo tên tài khoản</option>' +
+  '        <option value="1">Tìm theo tên</option>' +
+  '      </select>' +
+  '      <input type="text" id="tbl-searchbar" onkeyup="showItem()" placeholder="Search...">' +
+    '  </form>' +
+  '  </div>' +
+  '</div>';
 }
 
 function statisticLayout() {

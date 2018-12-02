@@ -408,7 +408,7 @@ function getProduct() {
                 //../img/fig/fig08/fig08_1.jpg
                 for (j=1; j<=4; j++) {
                   var filter = productArr[i].id.substr(0,3);
-                  s1 += '<img src="../img/' +
+                  s1 += '<img src="img/' +
                   filter +
                   '/' +
                   productArr[i].id +
@@ -416,7 +416,7 @@ function getProduct() {
                   productArr[i].id + '_' + j + '.jpg" alt="' + productArr[i].id + '_' + j + '.jpg"' +
                   'class="demo cursor" onclick="currentSlide(' + j + ')">';
                   //alert(s1);
-                  s2 += '<div class="my-slides"><img src="../img/' +
+                  s2 += '<div class="my-slides"><img src="img/' +
                   filter +
                   '/' +
                   productArr[i].id +
@@ -627,6 +627,7 @@ function displayUser(){
 
 window.onload = function(){
     autoCreateAdminAccount();
+    defaultUserAccount();
     autoNextSlide();
     checkLoginStatus();
     displayUser(); 
