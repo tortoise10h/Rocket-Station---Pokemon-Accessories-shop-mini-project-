@@ -1,5 +1,5 @@
 let adminUrl = window.location.href;
-var params = adminUrl.split('html/'); //split tại 'admin/'
+var params = adminUrl.split('/'); //split tại 'admin/'
 var sidebar = document.getElementsByClassName("sidebar-menu"); //get element để get tag ul
 var menuList = sidebar[0].getElementsByTagName('ul'); //get element để innerHTML
 
@@ -21,7 +21,7 @@ menu[4] = new menuCreat ("Thống kê", "adminpage.html?statistic");
 var menuOptions = "";
 for (var i = 0; i < menu.length; i++) {
   var menuActice = "";
-  if (params[1] == menu[i].menuLink) {
+  if (params[params.length-1] == menu[i].menuLink) {
     menuActice = "active";
     layout(i);
   }
