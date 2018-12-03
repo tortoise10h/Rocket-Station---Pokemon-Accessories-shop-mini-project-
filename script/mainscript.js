@@ -109,7 +109,6 @@ function urlHandle(){
         }else{
             position = categoryUrl[1] + "&" +categoryUrl[2];
         }
-        console.log("position " + position);
         switch(categoryUrl[0]){
 
             case 'hat' :{
@@ -139,71 +138,71 @@ function urlHandle(){
 }
 //Save product to shopping cart
 function saveProduct(productId){
-            //variable for check user login
-            let check = JSON.parse(localStorage.getItem('check'));
-            let checkUserLogin = check.isLogin;
-            if(checkUserLogin === null){
-                alert("Cần phải đăng nhập trước khi mua hàng!!!");
-            }else{
-                //variable to get information of product
-                let produId;
-                let productImgLink;
-                let productName;
-                let productQuantity;
-                let productFirstPrice;
-                let productLastPrice;
-                let productOfUser;
-                //get product infomation
-                //find product out
-                for(let i = 0; i < productArr.length; i++){
-                    if(productArr[i].id == productId){
-                        produId = productArr[i].id;
-                        productImgLink = productArr[i].imgLink;
-                        productName = productArr[i].name;
-                        productFirstPrice = productArr[i].firstPrice;
-                        productLastPrice = productArr[i].fixPrice;
-                        productOfUser = check.currentUsername;
-                        productQuantity = 1;
-                        break;
-                    }
-                }
-                //object for product in cart
-                let productCart = {
-                    prodId: produId,
-                    imgLink: productImgLink,
-                    name: productName,
-                    quantity: productQuantity,
-                    price: productFirstPrice,
-                    lastPrice: productLastPrice,
-                    user: productOfUser
-                };
-
-
-                //check exists of product in cart array
-                if(localStorage.getItem('productCartArr') === null){
-                    let productCartArr = [];
-                    productCartArr.push(productCart);
-                    //re-set to local storage
-                    localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
-                    alert("Thêm vào giỏ thành công!!!");
-                }else{
-                    let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
-                    //check the exists of product in shopping cart
-                    let position = findProduct(productId, productCartArr);
-                    //if product isn't exists in shopping cart
-                    if(position === -1){
-                        productCartArr.push(productCart);
-                    }else{
-                        //handle quantity of product in shopping cart
-                        productCartArr[position].quantity = checkProductQuantity(productId, productCartArr);
-                    }
-                    
-                    //re-set to local storage
-                    localStorage.setItem('productCartArr',JSON.stringify(productCartArr));
-                    alert("Thêm vào giỏ thành công!!!");
-                }
+    //variable for check user login
+    let check = JSON.parse(localStorage.getItem('check'));
+    let checkUserLogin = check.isLogin;
+    if(checkUserLogin === null){
+        alert("Cần phải đăng nhập trước khi mua hàng!!!");
+    }else{
+        //variable to get information of product
+        let produId;
+        let productImgLink;
+        let productName;
+        let productQuantity;
+        let productFirstPrice;
+        let productLastPrice;
+        let productOfUser;
+        //get product infomation
+        //find product out
+        for(let i = 0; i < productArr.length; i++){
+            if(productArr[i].id == productId){
+                produId = productArr[i].id;
+                productImgLink = productArr[i].imgLink;
+                productName = productArr[i].name;
+                productFirstPrice = productArr[i].firstPrice;
+                productLastPrice = productArr[i].fixPrice;
+                productOfUser = check.currentUsername;
+                productQuantity = 1;
+                break;
             }
         }
+        //object for product in cart
+        let productCart = {
+            prodId: produId,
+            imgLink: productImgLink,
+            name: productName,
+            quantity: productQuantity,
+            price: productFirstPrice,
+            lastPrice: productLastPrice,
+            user: productOfUser
+        };
+
+
+        //check exists of product in cart array
+        if(localStorage.getItem('productCartArr') === null){
+            let productCartArr = [];
+            productCartArr.push(productCart);
+            //re-set to local storage
+            localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
+            alert("Thêm vào giỏ thành công!!!");
+        }else{
+            let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
+            //check the exists of product in shopping cart
+            let position = findProduct(productId, productCartArr);
+            //if product isn't exists in shopping cart
+            if(position === -1){
+                productCartArr.push(productCart);
+            }else{
+                //handle quantity of product in shopping cart
+                productCartArr[position].quantity = checkProductQuantity(productId, productCartArr);
+            }
+            
+            //re-set to local storage
+            localStorage.setItem('productCartArr',JSON.stringify(productCartArr));
+            alert("Thêm vào giỏ thành công!!!");
+        }
+    }
+}
 //find position of product in productCartArr array
 function findProduct(productId, productCartArr){
     let pos = -1;
@@ -292,11 +291,11 @@ function addProductDisplayZone(position,productList,categoryUrl,baseUrl){
 }
 function addProduct(position,productList,categoryUrl,baseUrl){
     let productText = "<div class='products'>";
+    //distinguish normal page and page of color filter
+    //use for color filter
     if(!isNaN(position)){
         productText += normalCategoryProduct(productList,position,categoryUrl,baseUrl);
-        console.log("normal here");
     }else{
-        console.log("color here");
         productText += colorCategoryProduct(productList,position,categoryUrl,baseUrl);
     }
     productText += "</div>";
@@ -339,12 +338,17 @@ function colorCategoryProduct(productList,position,categoryUrl,baseUrl){
     let count = 0;
     console.log("position " + position);
     let eleUrl = position.split("&");
+    //get length of color page
+    for(let i = 0; i < productList.length; i++){
+        if(productList[i].color == eleUrl[0]){
+            colorPageIndex++;
+        }
+    }
+
     for(let i = eleUrl[1]; i < productList.length; i++){
         console.log("product " + productList[i].color);
         console.log("ele " + eleUrl[0]);  
-        if(productList[i].color == eleUrl[0] && productList[i].id.substr(0,3) == categoryUrl){
-
-            colorPageIndex++;
+        if(productList[i].color == eleUrl[0]){
             count++;
             let productLink = baseUrl + "?"  + categoryUrl + "#" + productList[i].id;
             productText += "<div class='product'>" +
@@ -371,13 +375,16 @@ function colorCategoryProduct(productList,position,categoryUrl,baseUrl){
     return productText;
 }
 
+
+
 function addPagination(productList, position,displayZone){
     //take product id
         //take product filter
         let filter = productList[0].id;
         let filterId = filter.substr(0,3);
-    //create pagination div
+    //divide position when url of page is url color page 0: color 1: position number
     let colorUrl = position.split("&");
+    //create pagination div
     let pagination = document.createElement('div');
     pagination.className = "pagination";
     displayZone.appendChild(pagination);
@@ -387,6 +394,7 @@ function addPagination(productList, position,displayZone){
     let pages = "";
     let pageIndex;
     //create pages
+    //recognize normal page if not it's a color page
     if(!isNaN(position)){
         for(let i = 1; i <= numOfPage; i++){
             pageIndex = (i-1)*8;
@@ -401,7 +409,7 @@ function addPagination(productList, position,displayZone){
         for(let i = 1; i <= numOfColorPage; i++){
             pageIndex = (i-1)*8;
             pages += "<a href='index.html?" + filterId + "&" + colorUrl[0] + "&" + pageIndex + "'";
-            if(pageIndex == position){
+            if(pageIndex == colorUrl[1]){
                 pages += "class='active'>" + i + "</a>";
             }else{
                 pages += ">" + i + "</a>";

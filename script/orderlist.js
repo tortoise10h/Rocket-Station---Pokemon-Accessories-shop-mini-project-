@@ -60,8 +60,16 @@ function createOrderListPage(){
                                         "</div>" +
                                         "<div class='order-product-price'>" + "Đơn giá: " + 
                                         "<span class='highlight'>" + orderArr[i]["productList"][j].price + "₫" + "</span>" +
-                                        "</div>" +
-                                        "</div>";
+                                        "</div>"+
+                                        "<div class='order-status'>";
+                                        if(orderArr[i].status.toLowerCase().indexOf("đang xử lý") > -1){
+                                            orderList += "<p style='color:#00336f'>" + orderArr[i].status + "</p>";
+                                        }else if(orderArr[i].status.toLowerCase().indexOf("đã bị hủy") > -1){
+                                            orderList += "<p style='color:red'>" + orderArr[i].status + "</p>";
+                                        }else{
+                                            orderList += "<p style='color:#18D44D'>" + orderArr[i].status + "</p>";
+                                        }
+                                        orderList += "</div></div>";
                                 }
                         }
                         orderList += "</div>";

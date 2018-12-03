@@ -11,12 +11,13 @@ function createShoppingCart(){
             "</section>";
             return false;
         }
+        //take all product which was added to local storage
+        let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
         //have to login to see shopping cart (obviously:)) )
         if(check.isLogin === true){
             slideZone.style.display = "none";
             mainZone.innerHTML = shoppingCartLayout();
-            //take all product which was added to local storage
-            let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
+        
             if(productCartArr === null){
                     let cartListZone = document.querySelector('.cart-list-zone');
                     cartListZone.innerHTML = "<p style='margin-left:8px'><i>Bạn chưa có món hàng nào trong giỏ hàng, mua hàng ngay và nhận nhiều ưu đãi từ chúng tôi</i></p>";
@@ -105,7 +106,7 @@ function createShoppingCart(){
         //for pay product in shopping cart
         let payBtn = document.getElementsByClassName('order-btn');
         payBtn[0].addEventListener('click', function(){
-                payCart(check.currentUsername);
+                payCart(check.currentUsername,productCartArr);
         });
     }
 }
@@ -185,97 +186,108 @@ function decreaseQuantity(productId){
 
 //for pay shopping cart
 
-function payCart(username){
-    let payConfirm = window.confirm("Bạn có muốn đặt hàng các sản phẩm trong giỏ không?");
-    if(payConfirm){
-        //Get date time when user pays the cart
-        let thisDate = new Date();
-        let thisYear = thisDate.getFullYear().toString();
-        let thisMonth = (thisDate.getMonth() + 1).toString();
-        let thisDay = thisDate.getDate().toString();
-        let thisHours = thisDate.getHours().toString();
-        let thisMinutes = thisDate.getMinutes().toString();
-        let thisSeconds = thisDate.getSeconds().toString();
-        //handle length of those day time if its length = 1, for ex thisSeconds = 7 => 07
-        if(thisMonth.length < 2){
-                thisMonth = "0" + thisMonth;
+function payCart(username,productCartArr){
+    let isCartEmpty = true;
+    for(let i = 0; i < productCartArr.length; i++){
+        if(username === productCartArr[i].user){
+            isCartEmpty = false;
         }
-        if(thisDay.length < 2){
-                thisDay = "0" + thisDay;
-        }
-        if(thisHours.length < 2){
-                thisHours = "0" + thisHours;
-        }
-        if(thisMinutes.length < 2){
-                thisMinutes = "0" + thisMinutes;
-        }
-        if(thisSeconds.length < 2){
-                thisSeconds = "0" + thisSeconds;
-        }
-
-
-        /*Create orderArr*/
-        //for orderArr instance var
-        let payDate = "";
-        payDate += thisDay + thisMonth + thisYear;
-        let payTime = "";
-        payTime +=  thisHours + thisMinutes + thisSeconds;
-        let orderId = thisDay + thisSeconds + thisMonth + thisMinutes + thisYear.substr(2,2) + thisHours;
-        let orderProductList = [];
-        
-        
-        //get productCartArr
-        let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
-
-        for(let i = 0; i < productCartArr.length; i++){
-            if(productCartArr[i].user === username){
-                //for instance var of element of orderProductList 
-                let productName = productCartArr[i].name;
-                let productPrice = productCartArr[i].lastPrice;
-                let productQuantity = productCartArr[i].quantity;
-                let productImage = productCartArr[i].imgLink;
-                let productId = productCartArr[i].prodId;
-                //orderProduct object
-                var orderProduct = {
-                    prodId: productId,
-                    name: productName,
-                    price: productPrice,
-                    quantity: productQuantity,
-                    img: productImage
-                };
-
-                orderProductList.push(orderProduct);
+    }
+    if(isCartEmpty == true){
+        alert("Bạn không thể thanh toán vì bạn chưa có bất kì món hàng nào trong giỏ, hãy chọn mua hàng và quay lại để trải nghiệm!!!");
+    }else{
+        let payConfirm = window.confirm("Bạn có muốn đặt hàng các sản phẩm trong giỏ không?");
+        if(payConfirm){
+            //Get date time when user pays the cart
+            let thisDate = new Date();
+            let thisYear = thisDate.getFullYear().toString();
+            let thisMonth = (thisDate.getMonth() + 1).toString();
+            let thisDay = thisDate.getDate().toString();
+            let thisHours = thisDate.getHours().toString();
+            let thisMinutes = thisDate.getMinutes().toString();
+            let thisSeconds = thisDate.getSeconds().toString();
+            //handle length of those day time if its length = 1, for ex thisSeconds = 7 => 07
+            if(thisMonth.length < 2){
+                    thisMonth = "0" + thisMonth;
             }
+            if(thisDay.length < 2){
+                    thisDay = "0" + thisDay;
+            }
+            if(thisHours.length < 2){
+                    thisHours = "0" + thisHours;
+            }
+            if(thisMinutes.length < 2){
+                    thisMinutes = "0" + thisMinutes;
+            }
+            if(thisSeconds.length < 2){
+                    thisSeconds = "0" + thisSeconds;
+            }
+
+
+            /*Create orderArr*/
+            //for orderArr instance var
+            let payDate = "";
+            payDate += thisDay + thisMonth + thisYear;
+            let payTime = "";
+            payTime +=  thisHours + thisMinutes + thisSeconds;
+            let orderId = thisDay + thisSeconds + thisMonth + thisMinutes + thisYear.substr(2,2) + thisHours;
+            let orderProductList = [];
+            
+            
+            //get productCartArr
+            let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
+
+            for(let i = 0; i < productCartArr.length; i++){
+                if(productCartArr[i].user === username){
+                    //for instance var of element of orderProductList 
+                    let productName = productCartArr[i].name;
+                    let productPrice = productCartArr[i].lastPrice;
+                    let productQuantity = productCartArr[i].quantity;
+                    let productImage = productCartArr[i].imgLink;
+                    let productId = productCartArr[i].prodId;
+                    //orderProduct object
+                    var orderProduct = {
+                        prodId: productId,
+                        name: productName,
+                        price: productPrice,
+                        quantity: productQuantity,
+                        img: productImage
+                    };
+
+                    orderProductList.push(orderProduct);
+                }
+            }
+
+            var order = {
+                id: orderId,
+                user: username,
+                orderDate: payDate,
+                orderTime: payTime,
+                productList: orderProductList,
+                status: "Đang xử lý..."
+            };
+
+            //check the exists of orderArr
+            if(localStorage.getItem('orderArr') === null){
+                let orderArr = [];
+                //add new order to order array
+                orderArr.push(order);
+                //re-set to local storage
+                localStorage.setItem('orderArr', JSON.stringify(orderArr));
+            }else{
+                let orderArr = JSON.parse(localStorage.getItem('orderArr'));
+                //add new order to order array
+                orderArr.push(order);
+                //re-set to local storage
+                localStorage.setItem('orderArr',JSON.stringify(orderArr));
+            }
+
+            //delete shopping cart arr
+            productCartArr.splice(0,productCartArr.length);
+            //set productCartArr back to local storage
+            localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
+            window.location.reload();
+            alert("Đặt hàng thành công!!!");
         }
-
-        var order = {
-            id: orderId,
-            user: username,
-            orderDate: payDate,
-            orderTime: payTime,
-            productList: orderProductList
-        };
-
-        //check the exists of orderArr
-        if(localStorage.getItem('orderArr') === null){
-            let orderArr = [];
-            //add new order to order array
-            orderArr.push(order);
-            //re-set to local storage
-            localStorage.setItem('orderArr', JSON.stringify(orderArr));
-        }else{
-            let orderArr = JSON.parse(localStorage.getItem('orderArr'));
-            //add new order to order array
-            orderArr.push(order);
-            //re-set to local storage
-            localStorage.setItem('orderArr',JSON.stringify(orderArr));
-        }
-
-        //delete shopping cart arr
-        productCartArr.splice(0,productCartArr.length);
-        //set productCartArr back to local storage
-        localStorage.setItem('productCartArr', JSON.stringify(productCartArr));
-        window.location.reload();
-        alert("Đặt hàng thành công!!!");
     }
 }

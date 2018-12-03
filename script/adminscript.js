@@ -134,7 +134,7 @@ function productsLayout() {
 }
 
 function orderLayout() {
-  document.getElementById('content').innerHTML = '<div class="date-selector">' +
+  document.getElementById('content').innerHTML = '<div id="ad-order-zone" class="date-selector">' +
   '  <div class="wrapper">' +
   '      <div class="from-date">' +
   '        Từ ngày:' +
@@ -145,14 +145,32 @@ function orderLayout() {
   '        <input type="date">' +
   '      </div>' +
   '      <div class="select-btn">' +
-  '        <button class="button bg-violet" onclick="">Chọn</button>' +
+  '        <button class="button bg-violet" onclick="dateFilter()">Chọn</button>' +
   '      </div>' +
+  '  </div>' +
+  '</div>'+
+  '<div class="table shadow">' +
+  '  <div class="tbl-header">' +
+  '    <table class="bg-green">' +
+  '      <tr>' +
+  '        <th>Mã đơn hàng</th>' +
+  '        <th>Tên khách hàng</th>' +
+  '        <th>Sản phẩm</th>' +
+  '        <th>Tổng tiền</th>' +
+  '        <th>Ngày giờ</th>' +
+  '        <th>Trạng thái</th>' +
+  '        <th>Hành động</th>' +
+  '      </tr>' +
+  '    </table>' +
+  '  </div>' +
+  '  <div class="tbl-order">' +
+  '    <!-- table here -->' +
   '  </div>' +
   '</div>';
 }
 
 function customerLayout() {
-  document.getElementById('content').innerHTML = '<div class="table shadow">' +
+  document.getElementById('content').innerHTML = '<div  class="table shadow">' +
   '  <div class="tbl-header">' +
   '    <table class="bg-blue">' +
   '      <tr>' +

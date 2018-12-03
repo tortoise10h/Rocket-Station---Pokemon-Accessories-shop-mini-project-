@@ -29,7 +29,7 @@
 	padding:1em;
 	border-radius:5px;
 	display:grid;
-	grid-template-columns: 1fr 3fr 1fr 1fr;
+	grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
 	align-items:center;
 }
 /*For each product image*/
@@ -46,6 +46,3 @@
 	text-decoration: underline;
 }
 /*For each product price*/
-.order-product-price span{
-
-}

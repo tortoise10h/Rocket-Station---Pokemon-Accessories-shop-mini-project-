@@ -1,4 +1,4 @@
-.tbl-content {
+.tbl-content, .tbl-order, .tbl-account {
   height: 450px;
   overflow: auto;
 }
@@ -42,3 +42,5 @@ td{
 tr:nth-child(even){
   background-color: #f2f2f2;
 }
+
+

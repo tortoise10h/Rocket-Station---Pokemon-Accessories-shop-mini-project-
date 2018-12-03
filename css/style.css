@@ -473,3 +473,9 @@ html,body{
   box-shadow:2px 3px 6px rgba(0,0,0,0.48);
   margin-bottom:8px;
 }
+
+/*FOR SEARCH PAGE*/
+.search-page-title h1{
+  margin-left:8px;
+  border-bottom:4px solid black;
+}
