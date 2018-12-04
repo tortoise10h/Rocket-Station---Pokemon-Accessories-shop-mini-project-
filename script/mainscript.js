@@ -257,11 +257,11 @@ function addSearchInpage(){
     return searchZone;
 }
 function filterList(categoryUrl){
-    let text = '<h3 style="text-align:center;margin-right:5px"> Tìm kiếm theo khoảng giá </h3>' +
-        '<input class="price-search-inp" type="number" min="1" id="priceFrom" placeholder="Giá từ">' +
-        '<input class="price-search-inp" type="number" min="1" id="priceTo" placeholder="Giá đến">' +
-        '<input class="price-search-btn" type="button" onclick="setLinkAndGoToSearch()" value="Tìm kiếm">' +
-        '<h3 style="font-size:1.1em;text-align:left;margin-left:15px">Tìm kiếm theo màu sắc ' + 
+    // let text = '<h3 style="text-align:center;margin-right:5px"> Tìm kiếm theo khoảng giá </h3>' +
+    //     '<input class="price-search-inp" type="number" min="1" id="priceFrom" placeholder="Giá từ">' +
+    //     '<input class="price-search-inp" type="number" min="1" id="priceTo" placeholder="Giá đến">' +
+    //     '<input class="price-search-btn" type="button" onclick="setLinkAndGoToSearch()" value="Tìm kiếm">' +
+        let text = '<h3 style="font-size:1.1em;text-align:left;margin-left:15px">Tìm kiếm theo màu sắc ' + 
         ' <span onclick="dropColor()" style="font-size:14px;cursor:pointer;transform:translate(0,-2px);-moz-transform:translate(0,-2px);" id="color-drop">&#9660;</span> ' + 
         ' <span onclick="upColor()" style="font-size:14px;transform:translate(0,-2px);-moz-transform:translate(0,-2px);cursor:pointer;display:none" id="color-up">&#9650;</span></h3>' +
         '<ul id="color-filter">' +
@@ -510,10 +510,20 @@ function getProduct() {
                 var productThumbnail = document.getElementsByClassName('product-thumbnail');
                 var productImage = document.getElementsByClassName('product-image');
                 let addToCart = document.getElementsByClassName('add-to-cart');
+                var productName = document.getElementsByClassName('product-title');
+                var productPrice = document.getElementsByClassName('product-price');
+                var productPreview = document.getElementsByClassName('product-preview');
+
                 var s1 = ''; //chuỗi s1 chứa các tag <img> để in ra product-thumbnail
                 var s2 = ''; //chuỗi s1 chứa các tag <img> để in ra product-image
                 var s3; //chuỗi s3 chứa button và trong button có id từng sản phẩm để phục vụ cho bỏ vào giỏ hàng
                 //mỗi sp 4 hình -> i chạy từ 1 đến 4
+                var s4 = '<ul>' + productArr[i].detail + '</ul>';
+                var s5 = '<h3>' + productArr[i].name + '</h3>';
+                var s6 = '<span style="text-decoration:line-through">' +
+                productArr[i].firstPrice + "₫" + "</span>" + "<br>" +
+                '<span style="color:#ff5959;font-weight:bold">' +
+                productArr[i].fixPrice + "₫" + "</span>";
                 var j;
                 s3 = "<button class='prod-detail-add-cart' value='" + productArr[i].id + "'><i class='fa fa-shopping-cart'></i>&nbsp;Thêm vào giỏ</button>"
                 //../img/fig/fig08/fig08_1.jpg
@@ -541,9 +551,11 @@ function getProduct() {
                   document.title = productArr[i].name;
                 }
                 productThumbnail[0].innerHTML = s1; //do dùng getElementsByClassName nên phải ghi là productThumbnail[0]
+                productName[0].innerHTML = s5;
+                productPrice[0].innerHTML = s6;
+                productPreview[0].innerHTML = s4;
                 productImage[0].innerHTML = s2; //do dùng getElementsByClassName nên phải ghi là productImage[0]
                 addToCart[0].innerHTML = s3; //do ... như trên luôn
-
                 //get all add to cart button and give them save product function when click
                 let addCartBtn = document.getElementsByClassName('prod-detail-add-cart');
                 //add event listener for each button
