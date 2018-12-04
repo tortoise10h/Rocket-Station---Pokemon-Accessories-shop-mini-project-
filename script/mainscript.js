@@ -257,11 +257,11 @@ function addSearchInpage(){
     return searchZone;
 }
 function filterList(categoryUrl){
-    // let text = '<h3 style="text-align:center;margin-right:5px"> Tìm kiếm theo khoảng giá </h3>' +
-    //     '<input class="price-search-inp" type="number" min="1" id="priceFrom" placeholder="Giá từ">' +
-    //     '<input class="price-search-inp" type="number" min="1" id="priceTo" placeholder="Giá đến">' +
-    //     '<input class="price-search-btn" type="button" onclick="setLinkAndGoToSearch()" value="Tìm kiếm">' +
-        let text = '<h3 style="font-size:1.1em;text-align:left;margin-left:15px">Tìm kiếm theo màu sắc ' + 
+    let text = '<h3 style="text-align:center;margin-right:5px"> Tìm kiếm theo khoảng giá </h3>' +
+        '<input class="price-search-inp" type="number" min="1" id="priceFrom" placeholder="Giá từ">' +
+        '<input class="price-search-inp" type="number" min="1" id="priceTo" placeholder="Giá đến">' +
+        '<input class="price-search-btn" type="button" onclick="setLinkAndGoToSearch()" value="Tìm kiếm">' +
+        '<h3 style="font-size:1.1em;text-align:left;margin-left:15px">Tìm kiếm theo màu sắc ' + 
         ' <span onclick="dropColor()" style="font-size:14px;cursor:pointer;transform:translate(0,-2px);-moz-transform:translate(0,-2px);" id="color-drop">&#9660;</span> ' + 
         ' <span onclick="upColor()" style="font-size:14px;transform:translate(0,-2px);-moz-transform:translate(0,-2px);cursor:pointer;display:none" id="color-up">&#9650;</span></h3>' +
         '<ul id="color-filter">' +
@@ -439,43 +439,35 @@ function addPagination(productList, position,displayZone){
                 pages += ">" + i + "</a>";
             }
         }
-    }else{
-        for(let i = 1; i <= numOfColorPage; i++){
-            
-            if (position.indexOf('search') != -1){
-                pageIndex = (i-1)*8;
-                pages += "<a href='index.html?" + filterId + "&" + colorUrl[0] + "&" + pageIndex + "'";
-                if(pageIndex == colorUrl[1]){
-                    pages += "class='active'>" + i + "</a>";
-                }else{
-                    pages += ">" + i + "</a>";
-                }
-              var searchURL = location.href;
-              var productType = (searchURL.split('?')[1]).split('&')[0];
-              var priceFrom = (searchURL.split('price')[1]).split('to')[0];
-              var priceTo = ((searchURL.split('price')[1]).split('to')[1]).split('&')[0]; //split để lấy giá đến nhé, VD là số 300k trong link kia
-              position = position.split('&')[1];
-              for(let i = 1; i <= numOfPage; i++){
-                  pageIndex = (i-1)*8;
-                  pages += "<a onclick='setLinkAndGoToSearch()' href='index.html?" + filterId + "&search=price" + priceFrom + "to" + priceTo + "&" + pageIndex + "'";
-                  if(pageIndex == position){
-                      pages += "class='active'>" + i + "</a>";
-                  }else{
-                      pages += ">" + i + "</a>";
-                  }
-              }
-            }
-            else {for(let i = 1; i <= numOfColorPage; i++){
-                pageIndex = (i-1)*8;
-                pages += "<a href='index.html?" + filterId + "&" + colorUrl[0] + "&" + pageIndex + "'";
-                if(pageIndex == colorUrl[1]){
-                    pages += "class='active'>" + i + "</a>";
-                }else{
-                    pages += ">" + i + "</a>";
-                }
+    }
+
+else{
+      if (position.indexOf('search') != -1){
+      var searchURL = location.href;
+      var productType = (searchURL.split('?')[1]).split('&')[0];
+      var priceFrom = (searchURL.split('price')[1]).split('to')[0];
+      var priceTo = ((searchURL.split('price')[1]).split('to')[1]).split('&')[0]; //split để lấy giá đến nhé, VD là số 300k trong link kia
+      position = position.split('&')[1];
+      for(let i = 1; i <= numOfPage; i++){
+          pageIndex = (i-1)*8;
+          pages += "<a onclick='setLinkAndGoToSearch()' href='index.html?" + filterId + "&search=price" + priceFrom + "to" + priceTo + "&" + pageIndex + "'";
+          if(pageIndex == position){
+              pages += "class='active'>" + i + "</a>";
+          }else{
+              pages += ">" + i + "</a>";
           }
+      }
+    }
+    else {for(let i = 1; i <= numOfColorPage; i++){
+        pageIndex = (i-1)*8;
+        pages += "<a href='index.html?" + filterId + "&" + colorUrl[0] + "&" + pageIndex + "'";
+        if(pageIndex == colorUrl[1]){
+            pages += "class='active'>" + i + "</a>";
+        }else{
+            pages += ">" + i + "</a>";
         }
-        }
+      }
+    }
     }
     document.querySelector('.pagination').innerHTML = pages;
 
@@ -762,5 +754,6 @@ window.onload = function(){
     createShoppingCart();
     createOrderListPage();
     displaySearchResult();
+    searchFromPriceToPrice();
     getProduct();
 }
