@@ -162,7 +162,9 @@ function increaseQuantity(productId){
     let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
     for(let i = 0; i < productCartArr.length; i++){
         if(productCartArr[i].prodId === productId){
-            productCartArr[i].quantity += 1;
+            let num = parseInt(productCartArr[i].quantity);
+            num++;
+            productCartArr[i].quantity = num;
             break;
         }
     }
@@ -175,8 +177,10 @@ function decreaseQuantity(productId){
     for(let i = 0; i < productCartArr.length; i++){
         if(productCartArr[i].prodId === productId){
                 //can't decrease quantity of product if it just has 1
-            if(productCartArr[i].quantity > 1){
-                productCartArr[i].quantity -= 1;
+            if(parseInt(productCartArr[i].quantity) > 1){
+                let num = parseInt(productCartArr[i].quantity);
+                num--;
+                productCartArr[i].quantity = num;
                 break;
             }
         }
