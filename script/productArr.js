@@ -23,7 +23,7 @@ productArr[0] = new products(
 );
 productArr[1] = new products(
   "hat01",
-  "Pokémon: Let's Go Trainer Male Baseball Cap by New Era (One Size-Adult)",
+  "Pokémon: Let's Go Trainer Male Baseball Cap by New Era",
   "250000",
   "185000",
   "img/hat/hat01/hat01_1.jpg",
@@ -33,7 +33,7 @@ productArr[1] = new products(
 );
 productArr[2] = new products(
   "hat02",
-  "Legendary Mewtwo 9FIFTY Baseball Cap by New Era (One Size-Adult)",
+  "Legendary Mewtwo 9FIFTY Baseball Cap by New Era",
   "300000",
   "225000",
   "img/hat/hat02/hat02_1.jpg",
@@ -43,7 +43,7 @@ productArr[2] = new products(
 );
 productArr[3] = new products(
   "hat03",
-  "Piplup Bubbly Beach 9FIFTY Baseball Cap by New Era (One Size-Adult)",
+  "Piplup Bubbly Beach 9FIFTY Baseball Cap by New Era",
   "300000",
   "225000",
   "img/hat/hat03/hat03_1.jpg",
@@ -53,7 +53,7 @@ productArr[3] = new products(
 );
 productArr[4] = new products(
   "hat04",
-  "Electric Rock 9FORTY Baseball Cap by New Era (One Size-Adult)",
+  "Electric Rock 9FORTY Baseball Cap by New Era",
   "305000",
   "230000",
   "img/hat/hat04/hat04_1.jpg",
@@ -63,7 +63,7 @@ productArr[4] = new products(
 );
 productArr[5] = new products(
   "hat05",
-  "Tapu Koko 9FIFTY Baseball Cap by New Era (One Size-Adult)",
+  "Tapu Koko 9FIFTY Baseball Cap by New Era",
   "300000",
   "225000",
   "img/hat/hat05/hat05_1.jpg",
@@ -73,7 +73,7 @@ productArr[5] = new products(
 );
 productArr[6] = new products(
   "hat06",
-  "Litten's Playhouse 9FIFTY Baseball Cap by New Era (One Size-Adult)",
+  "Litten's Playhouse 9FIFTY Baseball Cap by New Era",
   "285000",
   "210000",
   "img/hat/hat06/hat06_1.jpg",
@@ -83,7 +83,7 @@ productArr[6] = new products(
 );
 productArr[7] = new products(
   "hat07",
-  "Fire Spinner Marowak 9FIFTY Baseball Cap by New Era (One Size-Adult)",
+  "Fire Spinner Marowak 9FIFTY Baseball Cap by New Era",
   "285000",
   "210000",
   "img/hat/hat07/hat07_1.jpg",
@@ -93,7 +93,7 @@ productArr[7] = new products(
 );
 productArr[8] = new products(
   "hat08",
-  "Snoozing Snorlax 9FIFTY Baseball Cap by New Era (One Size—Adult)",
+  "Snoozing Snorlax 9FIFTY Baseball Cap by New Era",
   "285000",
   "210000",
   "img/hat/hat08/hat08_1.jpg",
@@ -103,7 +103,7 @@ productArr[8] = new products(
 );
 productArr[9] = new products(
   "hat09",
-  "Alola Friends 9FIFTY Baseball Cap by New Era (One Size—Adult)",
+  "Alola Friends 9FIFTY Baseball Cap by New Era",
   "260000",
   "190000",
   "img/hat/hat09/hat09_1.jpg",
@@ -113,7 +113,7 @@ productArr[9] = new products(
 );
 productArr[10] = new products(
   "hat10",
-  "Bellossom Tropics 9FIFTY Baseball Cap by New Era (One Size-Adult)",
+  "Bellossom Tropics 9FIFTY Baseball Cap by New Era",
   "310000",
   "285000",
   "img/hat/hat10/hat10_1.jpg",
@@ -123,7 +123,7 @@ productArr[10] = new products(
 );
 productArr[11] = new products(
   "hat11",
-  "Latios and Latias Eon Edge 9FORTY Baseball Cap by New Era (One Size-Adult)",
+  "Latios and Latias Eon Edge 9FORTY Baseball Cap by New Era",
   "300000",
   "275000",
   "img/hat/hat11/hat11_1.jpg",
@@ -133,7 +133,7 @@ productArr[11] = new products(
 );
 productArr[12] = new products(
   "hat12",
-  "Pikachu Silhouette Sync 9FIFTY Baseball Cap by New Era (One Size-Adult)",
+  "Pikachu Silhouette Sync 9FIFTY Baseball Cap by New Era",
   "300000",
   "285000",
   "img/hat/hat12/hat12_1.jpg",
@@ -143,7 +143,7 @@ productArr[12] = new products(
 );
 productArr[13] = new products(
   "hat13",
-  "Mew 9FORTY Baseball Cap by New Era (One Size-Adult)",
+  "Mew 9FORTY Baseball Cap by New Era",
   "300000",
   "285000",
   "img/hat/hat13/hat13_1.jpg",
@@ -153,7 +153,7 @@ productArr[13] = new products(
 );
 productArr[14] = new products(
   "hat14",
-  "Mythical Mania 9FIFTY Baseball Cap by New Era (One Size-Adult)",
+  "Mythical Mania 9FIFTY Baseball Cap by New Era",
   "280000",
   "165000",
   "img/hat/hat14/hat14_1.jpg",
@@ -163,7 +163,7 @@ productArr[14] = new products(
 );
 productArr[15] = new products(
   "hat15",
-  "Mega Rayquaza Eclipse 9FIFTY Baseball Cap by New Era (One Size-Adult)",
+  "Mega Rayquaza Eclipse 9FIFTY Baseball Cap by New Era",
   "300000",
   "285000",
   "img/hat/hat15/hat15_1.jpg",
@@ -173,7 +173,7 @@ productArr[15] = new products(
 );
 productArr[16] = new products(
   "hat16",
-  "Gengar Smirk 9FORTY Baseball Cap by New Era (One Size-Adult)",
+  "Gengar Smirk 9FORTY Baseball Cap by New Era",
   "300000",
   "285000",
   "img/hat/hat16/hat16_1.jpg",
@@ -413,7 +413,7 @@ productArr[39] = new products(
 );
 productArr[40] = new products(
   "fig00",
-  "figma: Red Posable Figure with Pikachu, Bulbasaur, Charmander & Squirtle",
+  "Pikachu, Bulbasaur, Charmander & Squirtle",
   "400000",
   "365000",
   "img/fig/fig00/fig00_1.jpg",
@@ -433,7 +433,7 @@ productArr[41] = new products(
 );
 productArr[42] = new products(
   "fig02",
-  "Pokémon Gallery Figure DX: Charizard-Blast Burn",
+  "Pokémon Figure DX: Charizard-Blast Burn",
   "400000",
   "385000",
   "img/fig/fig02/fig02_1.jpg",
@@ -473,7 +473,7 @@ productArr[45] = new products(
 );
 productArr[46] = new products(
   "fig06",
-  "Pokémon Gallery Figure: Pikachu—Thunderbolt",
+  "Pokémon Figure: Pikachu—Thunderbolt",
   "400000",
   "385000",
   "img/fig/fig06/fig06_1.jpg",

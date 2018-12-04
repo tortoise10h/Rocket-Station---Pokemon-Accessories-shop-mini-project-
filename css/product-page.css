@@ -61,10 +61,12 @@ body {
 }
 
 .product-info {
-  max-width: 750px;
+  max-width: 550px;
   float: left;
 }
-
+.product-info .product-title{
+  width:100%;
+}
 .product-preview {
   height: 150px;
 }
