@@ -77,7 +77,7 @@ function gotoSlide(index){
 
 
 //auto next slide
-let times = 5000;
+let times = 4000;
 function autoNextSlide(){
     nextSlide();
 

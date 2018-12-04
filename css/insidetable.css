@@ -14,8 +14,8 @@
   margin: auto;
 }
 /*search bar for order page*/
-.wrapper .tbl-searchbar{
-  margin-top:8px;
+#order-searchbar{
+  margin-top:5px;
 }
 .tbl-searchbar input, .tbl-searchbar select , #account-filter select{
   border: 1px solid #c4c4c4;

@@ -1,5 +1,6 @@
-let searchUrlPage = url.split("?")[1];
+
 function displaySearchResult(){
+	let searchUrlPage = url.split("?")[1];
 	if(searchUrlPage.indexOf("main-search") > -1){
 		let searchList = getAllProductMatch();
                 //if search value doesn't match anything
@@ -20,6 +21,7 @@ function displaySearchResult(){
 }
 
 function addPageSearch(searchList, position){
+	let searchUrlPage = url.split("?")[1];
 	let count = 0;
 	let searchPage = "<div class='search-page-title'>" +
 	"<h1>Kết quả tìm kiếm</h1>" +
@@ -51,6 +53,7 @@ function addPageSearch(searchList, position){
 }
 
 function searchPagination(searchList){
+	let searchUrlPage = url.split("?")[1];
 	let numOfPage = Math.ceil(searchList.length / 10);
         //store all pagin tag
 	let pages = "";
@@ -88,6 +91,7 @@ function searchPagination(searchList){
 
 //get all product which is match with search value
 function getAllProductMatch(){
+	let searchUrlPage = url.split("?")[1];
 	let result = [];
 	let searchValue = searchUrlPage.split("=")[1];
 	if(searchValue.indexOf("&") > -1){
@@ -106,6 +110,7 @@ function getAllProductMatch(){
     }
 
     function layoutForEachProduct(product){
+    	let searchUrlPage = url.split("?")[1];
     	let text = "";
     	let filter = product.id.substr(0,3);
     	let productLink =  "index.html?" + filter + "#" + product.id;

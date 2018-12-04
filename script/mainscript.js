@@ -38,7 +38,7 @@ function urlHandle(){
             "</div>" +
             "<hr>" +
             "<div class='product-name'>"+
-            "<a href='#' target='_blank'>" +
+            "<a href='" + productLink + "' target='_blank'>" +
             "<p>" + bestSellerArr[i].name + "</p>" +
             "</a>"+
             "</div>" +
@@ -72,7 +72,7 @@ function urlHandle(){
             "</div>" +
             "<hr>" +
             "<div class='product-name'>"+
-            "<a href='#' target='_blank'>" +
+            "<a href='" + productLink + "' target='_blank'>" +
             "<p>" + bestSaleArr[i].name + "</p>" +
             "</a>"+
             "</div>" +
@@ -114,22 +114,22 @@ function urlHandle(){
 
             case 'hat' :{
                 addLeftMenu(categoryUrl[0]);
-                addProductDisplayZone(position,hatList, categoryUrl[0], urlParams[0]);
+                addProductDisplayZone(position,hatList, categoryUrl[0], urlParams[0],true);
                 break;
             }
             case 'shi' :{
                 addLeftMenu(categoryUrl[0]);
-                addProductDisplayZone(position,shirtList, categoryUrl[0], urlParams[0]);
+                addProductDisplayZone(position,shirtList, categoryUrl[0], urlParams[0],true);
                 break;
             }
             case 'plu' :{
                 addLeftMenu(categoryUrl[0]);
-                addProductDisplayZone(position,plushList, categoryUrl[0], urlParams[0]);
+                addProductDisplayZone(position,plushList, categoryUrl[0], urlParams[0],true);
                 break;
             }
             case 'fig' :{
                 addLeftMenu(categoryUrl[0]);
-                addProductDisplayZone(position,figureList, categoryUrl[0], urlParams[0]);
+                addProductDisplayZone(position,figureList, categoryUrl[0], urlParams[0],true);
                 break;
             }
 
@@ -257,7 +257,14 @@ function addSearchInpage(){
     return searchZone;
 }
 function filterList(categoryUrl){
-    let text = '<ul>' +
+    let text = '<h3 style="text-align:center;margin-right:5px"> Tìm kiếm theo khoảng giá </h3>' +
+        '<input class="price-search-inp" type="number" min="1" id="priceFrom" placeholder="Giá từ">' +
+        '<input class="price-search-inp" type="number" min="1" id="priceTo" placeholder="Giá đến">' +
+        '<input class="price-search-btn" type="button" onclick="setLinkAndGoToSearch()" value="Tìm kiếm">' +
+        '<h3 style="font-size:1.1em;text-align:left;margin-left:15px">Tìm kiếm theo màu sắc ' + 
+        ' <span onclick="dropColor()" style="font-size:14px;cursor:pointer;transform:translate(0,-2px);-moz-transform:translate(0,-2px);" id="color-drop">&#9660;</span> ' + 
+        ' <span onclick="upColor()" style="font-size:14px;transform:translate(0,-2px);-moz-transform:translate(0,-2px);cursor:pointer;display:none" id="color-up">&#9650;</span></h3>' +
+        '<ul id="color-filter">' +
         '<li><a href="index.html' + '?' + categoryUrl + '&' + 'xanh&0">xanh</a></li>' +
         '<li><a href="index.html' + '?' + categoryUrl + '&' + 'do&0">đỏ</a></li>' +
         '<li><a href="index.html' + '?' + categoryUrl + '&' + 'tim&0">tím</a></li>' +
@@ -268,24 +275,45 @@ function filterList(categoryUrl){
         '<li><a href="index.html' + '?' + categoryUrl + '&' + 'trang&0">trắng</a></li>' +
         '<li><a href="index.html' + '?' + categoryUrl + '&' + 'cam&0">cam</a></li>' +
         '<li><a href="index.html' + '?' + categoryUrl + '&' + 'hong&0">hồng</a></li>' +
-    '</ul>';
+        '</ul>';
     return text;
 }   
+//for display color filter
+function dropColor(){
+    let ul = document.getElementById('color-filter');
+    let upBtn = document.getElementById('color-up');
+    let dropBtn = document.getElementById('color-drop');
+    ul.style.display = "block";
+    upBtn.style.display = "inline-block";
+    dropBtn.style.display = "none";
+}
 
-function addProductDisplayZone(position,productList,categoryUrl,baseUrl){
+function upColor(){
+    let ul = document.getElementById('color-filter');
+    let upBtn = document.getElementById('color-up');
+    let dropBtn = document.getElementById('color-drop');
+    ul.style.display = "none";
+    upBtn.style.display = "none";
+    dropBtn.style.display = "inline-block";
+}
+
+
+function addProductDisplayZone(position,productList,categoryUrl,baseUrl,isTitle){
     //Create product display zone
     let displayZone = document.createElement('div');
     displayZone.className = "product-display-zone";
     mainZone.appendChild(displayZone); 
     //create main frame of product display zone
-    if(categoryUrl === 'fig'){
+    if(isTitle == true){
+        if(categoryUrl === 'fig'){
         addProductZoneMain("Pokemon Figure",displayZone);
-    }else if(categoryUrl === 'plu'){
-        addProductZoneMain("Thú nhồi bông",displayZone);
-    }else if(categoryUrl === 'hat'){
-        addProductZoneMain("Nón",displayZone);
-    }else{
-        addProductZoneMain("Áo thun",displayZone);
+        }else if(categoryUrl === 'plu'){
+            addProductZoneMain("Thú nhồi bông",displayZone);
+        }else if(categoryUrl === 'hat'){
+            addProductZoneMain("Nón",displayZone);
+        }else{
+            addProductZoneMain("Áo thun",displayZone);
+        }
     }
     //display product list 
     document.querySelector('.product-zone').innerHTML = addProduct(position,productList,categoryUrl,baseUrl);
@@ -322,7 +350,7 @@ function normalCategoryProduct(productList, position, categoryUrl, baseUrl){
         "</div>" +
         "<hr>" +
         "<div class='product-name'>"+
-        "<a href='#' target='_blank'>" +
+        "<a href='" + productLink + "' target='_blank'>" +
         "<p>" + productList[i].name + "</p>" +
         "</a>"+
         "</div>" +
@@ -413,13 +441,40 @@ function addPagination(productList, position,displayZone){
         }
     }else{
         for(let i = 1; i <= numOfColorPage; i++){
-            pageIndex = (i-1)*8;
-            pages += "<a href='index.html?" + filterId + "&" + colorUrl[0] + "&" + pageIndex + "'";
-            if(pageIndex == colorUrl[1]){
-                pages += "class='active'>" + i + "</a>";
-            }else{
-                pages += ">" + i + "</a>";
+            
+            if (position.indexOf('search') != -1){
+                pageIndex = (i-1)*8;
+                pages += "<a href='index.html?" + filterId + "&" + colorUrl[0] + "&" + pageIndex + "'";
+                if(pageIndex == colorUrl[1]){
+                    pages += "class='active'>" + i + "</a>";
+                }else{
+                    pages += ">" + i + "</a>";
+                }
+              var searchURL = location.href;
+              var productType = (searchURL.split('?')[1]).split('&')[0];
+              var priceFrom = (searchURL.split('price')[1]).split('to')[0];
+              var priceTo = ((searchURL.split('price')[1]).split('to')[1]).split('&')[0]; //split để lấy giá đến nhé, VD là số 300k trong link kia
+              position = position.split('&')[1];
+              for(let i = 1; i <= numOfPage; i++){
+                  pageIndex = (i-1)*8;
+                  pages += "<a onclick='setLinkAndGoToSearch()' href='index.html?" + filterId + "&search=price" + priceFrom + "to" + priceTo + "&" + pageIndex + "'";
+                  if(pageIndex == position){
+                      pages += "class='active'>" + i + "</a>";
+                  }else{
+                      pages += ">" + i + "</a>";
+                  }
+              }
             }
+            else {for(let i = 1; i <= numOfColorPage; i++){
+                pageIndex = (i-1)*8;
+                pages += "<a href='index.html?" + filterId + "&" + colorUrl[0] + "&" + pageIndex + "'";
+                if(pageIndex == colorUrl[1]){
+                    pages += "class='active'>" + i + "</a>";
+                }else{
+                    pages += ">" + i + "</a>";
+                }
+          }
+        }
         }
     }
     document.querySelector('.pagination').innerHTML = pages;
@@ -462,7 +517,10 @@ function getProduct() {
                 var j;
                 s3 = "<button class='prod-detail-add-cart' value='" + productArr[i].id + "'><i class='fa fa-shopping-cart'></i>&nbsp;Thêm vào giỏ</button>"
                 //../img/fig/fig08/fig08_1.jpg
-                for (j=1; j<=4; j++) {
+                let imgPerProduct = 4;
+                if (productArr[i].id.substr(0,3) == 'shi')
+                imgPerProduct = 3;
+                for (j=1; j<=imgPerProduct; j++) {
                   var filter = productArr[i].id.substr(0,3);
                   s1 += '<img src="img/' +
                   filter +

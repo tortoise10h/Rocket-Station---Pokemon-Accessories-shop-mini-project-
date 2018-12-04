@@ -126,10 +126,45 @@ function displayBySelect(){
   }
 }
 
-//from date to date
 function dateFilter(){
-  let fromDate = document.querySelector('.from-date inp');
-  let toDate = document.querySelector('.to-date inp');
-  console.log(fromDate);
-  console.log(toDate);
+    
+    //get day month year of from date and to date
+    let fromYear = parseInt(document.getElementById('from-date-value').value.substr(0,4));
+    let fromMonth = parseInt(document.getElementById('from-date-value').value.substr(5,2));
+    let fromDay = parseInt(document.getElementById('from-date-value').value.substr(8,2));
+
+    let toYear = parseInt(document.getElementById('to-date-value').value.substr(0,4));
+    let toMonth = parseInt(document.getElementById('to-date-value').value.substr(5,2));
+    let toDay = parseInt(document.getElementById('to-date-value').value.substr(8,2));
+
+    //get all rows
+    let tr = document.getElementsByClassName('tbl-order')[0].getElementsByTagName('tr');
+    //loop throuh all tr elements
+    for(let i = 0; i < tr.length; i++){
+      //10 first characters are day month year from each row, ex: 02/10/1999
+      let dateStr = tr[i].getElementsByTagName('td')[4].textContent.substr(0,10);
+      //get day month year of each row
+      let rowDay = parseInt(dateStr.substr(0,2));
+      let rowMonth = parseInt(dateStr.substr(3,2));
+      let rowYear = parseInt(dateStr.substr(6,4));
+      
+      //compare year
+      if(rowYear >= fromYear && rowYear <= toYear){
+        tr[i].style.display = "";
+        //if year matches then compare month
+        if(rowMonth >= fromMonth && rowMonth <= toMonth){
+          tr[i].style.display = "";
+          //if month and year match then compare day
+          if(rowDay >= fromDay && rowDay <= toDay){
+            tr[i].style.display = "";
+          }else{
+            tr[i].style.display = "none";
+          }
+        }else{
+          tr[i].style.display = "none";
+        }
+      }else{
+        tr[i].style.display = "none";
+      }
+    }
 }

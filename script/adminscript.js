@@ -42,8 +42,10 @@ function layout(n) {
       productsLayout();
       break;
     case 2:
-      orderLayout();
-      break;
+      {
+        orderLayout();
+        break;
+      }
     case 3:
       customerLayout();
       break;
@@ -139,16 +141,16 @@ function orderLayout() {
   '  <div class="wrapper">' +
   '      <div class="from-date">' +
   '        Từ ngày:' +
-  '        <input type="date">' +
+  '        <input id="from-date-value" type="date">' +
   '      </div>' +
   '      <div class="to-date">' +
   '        Đến ngày:' +
-  '        <input type="date">' +
+  '        <input id="to-date-value" type="date">' +
   '      </div>' +
   '      <div class="select-btn">' +
   '        <button class="button bg-violet" onclick="dateFilter()">Chọn</button>' +
-  '      </div>' +
-  '  <div class="tbl-searchbar">' +
+  '      </div>' + "</div>" +
+  '  <div id="order-searchbar" class="tbl-searchbar">' +
   '    <form>' +
   '      <select id="order-filter" onchange="displayBySelect()">' +
   '        <option value="0">Tìm theo mã đơn</option>' +
@@ -180,6 +182,7 @@ function orderLayout() {
   '    <!-- table here -->' +
   '  </div>' +
   '</div>';
+  
 }
 
 function customerLayout() {
@@ -191,7 +194,7 @@ function customerLayout() {
   '        <th>Email</th>' +
   '        <th>Tài khoản</th>' +
   '        <th>Mật khẩu</th>' +
-  '        <th>Hành động</th>' +
+  '        <th style="text-align:center">Hành động</th>' +
   '      </tr>' +
   '    </table>' +
   '  </div>' +

@@ -310,22 +310,31 @@ html,body{
     float:left;
     background:#ECEAEA;
     border-radius:6px;
+    margin-top:10px;
 }
-.inpage-search {
-  overflow: hidden;
+/*for from price to price*/
+.price-search-inp{
+  border:none;
+  outline:none;
+  width:90%;
+  margin:5px 10px;
+  padding:10px 12px;
+  border-radius:4px;
 }
-.inpage-search form{
-    padding:0.5em;
+.price-search-btn{
+  border:none;
+  outline:none;
+  margin:5px 10px;
+  width:90%;
+  padding:8px 10px;
+  border-radius:4px;
+  color:#fff;
+  background:#EC6565;
 }
-.inpage-search input[type=text] {
-  width:100%;
-  padding:1em;
+.price-search-btn:hover{
+  background:#ff5959;
 }
 
-.inpage-search::after {
-  content: "";
-  clear: both;
-}
 .filter {
   clear: both;
 }
@@ -334,6 +343,7 @@ html,body{
   list-style-type: none;
   padding: 10px 5px;
   margin: 0;
+  display:none;
 }
 
 .filter li{
@@ -408,6 +418,7 @@ html,body{
   line-height: 18px;
   font-weight: bold;
   margin-left:15px;
+  min-height:80px;
 }
 
 .product .product-name p:hover {

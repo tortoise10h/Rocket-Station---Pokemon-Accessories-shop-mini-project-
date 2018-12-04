@@ -22,8 +22,7 @@ function reloadCustomerList() {
       '<td>' + accountList[i].email + '</td>' +
       '<td>' + accountList[i].username + '</td>' +
       '<td>' + accountList[i].password + '</td>' +
-      '<td>' +
-        '<button class="table-btn" onclick="editCustomer(' + i + ')">Sửa</button>' +  
+      '<td style="text-align:center">' +
         '<button class="table-btn" onclick="removeCustomer(' + i + ')">Xóa</button>' +
       '</td>' +
     '</tr>';
