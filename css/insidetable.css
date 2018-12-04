@@ -1,3 +1,4 @@
+/*show overflow if it need*/
 .tbl-content, .tbl-order, .tbl-account {
   height: 450px;
   overflow: auto;
@@ -5,6 +6,16 @@
 .tbl-searchbar , .account-search{
   text-align: center;
   padding: 10px;
+}
+.tbl-searchbar {
+  text-align: center;
+  padding: 10px;
+  display: inline-block;
+  margin: auto;
+}
+/*search bar for order page*/
+.wrapper .tbl-searchbar{
+  margin-top:8px;
 }
 .tbl-searchbar input, .tbl-searchbar select , #account-filter select{
   border: 1px solid #c4c4c4;

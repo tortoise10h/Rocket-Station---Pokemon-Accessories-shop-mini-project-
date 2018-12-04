@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
   <link rel="icon" type="image/jpg" href="adminicon.png">
   <link rel="stylesheet" href="css/adminstyle.css">
+  <link rel="stylesheet" href="css/producteditor.css">
   <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/products.css">
+  <link rel="stylesheet" href="css/insidetable.css">
   <link rel="stylesheet" href="css/order.css">
   <link rel="stylesheet" href="css/statistic.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -42,7 +43,70 @@
     </div>
   </div>
   <section id="section">
+    <!-- form cho thay đổi thông tin sản phẩm -->
+    <div class="product-editor-form">
+      <div class="product-editor-content animate">
+        <form name="productEditor">
+          <div class="product-editor-container">
+            <h1>Sửa thông tin sản phẩm</h1>
+            <hr>
+            <label for="productName"><b>Tên sản phẩm</b></label>
+            <input type="text" placeholder="Tên sản phẩm" name="productName" required>
+
+            <label for="productId"><b>Mã sản phẩm</b></label>
+            <input type="text" placeholder="Mã sản phẩm" name="productId" required>
+
+            <label for="productFirstPrice"><b>Giá gốc</b></label>
+            <input type="text" placeholder="Giá gốc" name="productFirstPrice" required>
+
+            <label for="productFixPrice"><b>Giá giảm</b></label>
+            <input type="text" placeholder="Giá giảm" name="productFixPrice" required>
+
+            <label for="productImgFile"><b>Hình ảnh</b></label>
+            <input type="file" name="productImgFile">
+          </div>
+          <div class="clearfix">
+          <button type="button" class="edit-btn">Thay đổi</button>
+          <button type="button" onclick="closeEditForm()" class="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- kết thúc form thay đổi thông tin sản phẩm -->
+
+    <!-- form cho thêm sản phẩm -->
+    <div class="product-add-form">
+      <div class="product-add-content animate">
+        <form name="productAdder">
+          <div class="product-add-container">
+            <h1>Thêm sản phẩm</h1>
+            <hr>
+            <label for="productName"><b>Tên sản phẩm</b></label>
+            <input type="text" placeholder="Tên sản phẩm" name="productName" required>
+
+            <label for="productId"><b>Mã sản phẩm</b></label>
+            <input type="text" placeholder="Mã sản phẩm" name="productId" required>
+
+            <label for="productFirstPrice"><b>Giá gốc</b></label>
+            <input type="text" placeholder="Giá gốc" name="productFirstPrice" required>
+
+            <label for="productFixPrice"><b>Giá giảm</b></label>
+            <input type="text" placeholder="Giá giảm" name="productFixPrice" required>
+
+            <label for="productImgFile"><b>Hình ảnh</b></label>
+            <input type="file" name="productImgFile">
+          </div>
+          <div class="clearfix">
+          <button type="button" class="add-btn">Thêm</button>
+          <button type="button" onclick="closeEditForm()" class="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- kết thúc form thêm sản phẩm -->
+
     <div id="content">
+
       <div class="container">
         <div class="statistic-preview shadow">
           <div class="preview-container">
@@ -52,7 +116,7 @@
                 <span>Đơn hàng</span>
               </div>
               <div class="number">
-                <strong>5135</strong>
+                <strong>5000</strong>
               </div>
             </div>
           </div>
@@ -63,7 +127,7 @@
                 <span>Khách hàng</span>
               </div>
               <div class="number">
-                <strong>6254</strong>
+                <strong>6000</strong>
               </div>
             </div>
           </div>
@@ -93,6 +157,7 @@
       </div>
     </div>
   </section>
+
 
   <script src="script/adminscript.js"></script>
   <script src="script/getarrs.js"></script>

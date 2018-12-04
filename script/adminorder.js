@@ -16,11 +16,11 @@ function reloadOrderList() {
       '<td style="padding:5px">';
       for(let j = 0; j < orderArr[i]["productList"].length; j++){
         orderShow += '<p>'+ "-&nbsp;" +
-                      orderArr[i]["productList"][j].name + "[" + "<span style='font-weight:bold'>" +
-                      orderArr[i]["productList"][j].quantity + "</span>" + "]:" +
-                      "&nbsp;" + "<span>" + orderArr[i]["productList"][j].price + "₫" +
-                      "</span>" +
-                      '</p>'
+        orderArr[i]["productList"][j].name + "[" + "<span style='font-weight:bold'>" +
+        orderArr[i]["productList"][j].quantity + "</span>" + "]:" +
+        "&nbsp;" + "<span>" + orderArr[i]["productList"][j].price + "₫" +
+        "</span>" +
+        '</p>'
       } 
       orderShow += '</td>' +
       '</td>'+
@@ -31,10 +31,10 @@ function reloadOrderList() {
       '</td>' +
       '<td  style="text-align:center">' + orderArr[i].status + '</td>' +
       '<td>' +
-        '<button class="table-btn" onclick="confirmOrder(' + i + ')">Xác nhận đơn</button>' +  
-        '<button class="table-btn" onclick="cancelOrder(' + i + ')">Hủy đơn</button>' +
+      '<button class="table-btn" onclick="confirmOrder(' + i + ')">Xác nhận đơn</button>' +  
+      '<button class="table-btn" onclick="cancelOrder(' + i + ')">Hủy đơn</button>' +
       '</td>' +
-    '</tr>';
+      '</tr>';
     }
   }
   orderShow += '</table>';
@@ -66,5 +66,70 @@ function cancelOrder(num){
   window.location.reload();
 }
 
+//search in order
+let orderSearchBox = document.getElementById('order-search');
+orderSearchBox.addEventListener('keyup', orderSearch);
+function orderSearch(){
+  //get value from username input box
+  let orderValue = orderSearchBox.value;
+  //shortcut get each tr of table
+  let tr = document.getElementsByClassName('tbl-order')[0].getElementsByTagName('tr');
+  //get filter of search: search by full name or search by username
+  let orderFilter = document.getElementById('order-filter').value;
+  for(let i = 0; i < tr.length; i++){
+    //value of account filter same to index of td in td array
+    //line in if for get all td tag in each tr tag class="table-btn"
+    if(tr[i].getElementsByTagName('td')[orderFilter].textContent.toLowerCase().indexOf(orderValue) > -1){
+      tr[i].style.display = "";
+    }else{
+      tr[i].style.display = "none";
+    }
+  }
+  
+}
+
+function displayBySelect(){
+  let tr = document.getElementsByClassName('tbl-order')[0].getElementsByTagName('tr');
+  //get filter of search: search by full name or search by username
+  let orderFilter = document.getElementById('order-filter').value;
+  //if admin select "đơn hàng đã xử lý"
+  if(orderFilter == 5.4){
+    for(let i = 0; i < tr.length; i++){
+      //value of account filter same to index of td in td array
+      //line in if for get all td tag in each tr tag class="table-btn"
+      if(tr[i].getElementsByTagName('td')[5].textContent.toLowerCase().indexOf("đã giao hàng") > -1){
+        tr[i].style.display = "";
+      }else{
+        tr[i].style.display = "none";
+      }
+    }
+  }else if(orderFilter == 5.2){ //if admin select "đơn hàng chưa xử lý"
+    for(let i = 0; i < tr.length; i++){
+      //value of account filter same to index of td in td array
+      //line in if for get all td tag in each tr tag class="table-btn"
+      if(tr[i].getElementsByTagName('td')[5].textContent.toLowerCase().indexOf("đang xử lý") > -1){
+        tr[i].style.display = "";
+      }else{
+        tr[i].style.display = "none";
+      }
+    }
+  }else if(orderFilter == 5.6){ //if admin select "đơn hàng đã hủy"
+    for(let i = 0; i < tr.length; i++){
+      //value of account filter same to index of td in td array
+      //line in if for get all td tag in each tr tag class="table-btn"
+      if(tr[i].getElementsByTagName('td')[5].textContent.toLowerCase().indexOf("đã bị hủy") > -1){
+        tr[i].style.display = "";
+      }else{
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
 
 //from date to date
+function dateFilter(){
+  let fromDate = document.querySelector('.from-date inp');
+  let toDate = document.querySelector('.to-date inp');
+  console.log(fromDate);
+  console.log(toDate);
+}

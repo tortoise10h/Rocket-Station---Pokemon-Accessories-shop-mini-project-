@@ -17,6 +17,19 @@ hr {
   color: #fff;
   box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
+
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 20%; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: -1; /* Stay under bottom */
+    left: 0;
+    background-color: #fff; /* White */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+    box-shadow: 5px 0 5px -5px #ddd; /* Shadow */
+}
+/*
 .sidenav {
   height: 100%;
   position: fixed;
@@ -24,7 +37,7 @@ hr {
   background: #fff;
   overflow: hidden;
   box-shadow: 5px 0 5px -5px #ddd;
-}
+}*/
 .sidebar-header {
   overflow: hidden;
 }

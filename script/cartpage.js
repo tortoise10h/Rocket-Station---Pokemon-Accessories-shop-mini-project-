@@ -74,7 +74,7 @@ function createShoppingCart(){
                         '<button class="sub-quantity change-quantity-btn" onclick="' + "decreaseQuantity(" + "'" + productCartArr[i].prodId + "'" + ")" + '">-</button>' +
                         "</span>" +
                         "<span class='quantity-box-display'>" +
-                        "<input type='tel' name='quantity-box' style='width:30px;text-align:center' value='" + productCartArr[i].quantity + "'>" +
+                        "<input onchange='changeQuantity(" + '"' + productCartArr[i].prodId  + '"' +")' type='tel' name='quantity-box' style='width:30px;text-align:center' value='" + productCartArr[i].quantity + "'>" +
                         "</span" +
                         "<span class='change-quantity'>" +
                         '<button class="add-quantity change-quantity-btn" onclick="' + "increaseQuantity(" + "'" + productCartArr[i].prodId + "'" + ")" + '">+</button>' +
@@ -103,6 +103,7 @@ function createShoppingCart(){
             }
         }
         deleteCartProduct();
+
         //for pay product in shopping cart
         let payBtn = document.getElementsByClassName('order-btn');
         payBtn[0].addEventListener('click', function(){
@@ -183,6 +184,18 @@ function decreaseQuantity(productId){
     localStorage.setItem('productCartArr',JSON.stringify(productCartArr));
     window.location.reload();
 }
+
+//input number to change quantity 
+// let quantityInput = document.querySelector('input[type="tel"]');
+// quantityInput.addEventListener('keydown', function(){
+//     changeQuantity(productCartArr[i].prodId, quantityInput.value);
+// });
+// function changeQuantity(prodId, quantityValue){
+//     let productCartArr = JSON.parse(localStorage.getItem('productCartArr'));
+//     productCartArr[i].quantity = quantityValue;
+//     localStorage.setItem('productCartArr',JSON.stringify(productCartArr));
+//     window.location.reload();
+// }
 
 //for pay shopping cart
 

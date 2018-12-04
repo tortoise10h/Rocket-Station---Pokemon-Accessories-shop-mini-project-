@@ -4,18 +4,19 @@ var sidebar = document.getElementsByClassName("sidebar-menu"); //get element đ�
 var menuList = sidebar[0].getElementsByTagName('ul'); //get element để innerHTML
 
 //hàm khởi tạo
-function menuCreat(menuTitle, menuLink) {
+function menuCreat(menuTitle, menuLink, menuIcon) {
   this.menuTitle = menuTitle;
   this.menuLink = menuLink;
+  this.menuIcon = menuIcon;
 }
 
 //menu links array
 var menu = [];
-menu[0] = new menuCreat ("Home", "adminpage.html");
-menu[1] = new menuCreat ("Sản phẩm", "adminpage.html?products");
-menu[2] = new menuCreat ("Đơn hàng", "adminpage.html?order");
-menu[3] = new menuCreat ("Khách hàng", "adminpage.html?customer");
-menu[4] = new menuCreat ("Thống kê", "adminpage.html?statistic");
+menu[0] = new menuCreat ("Home", "adminpage.html", '<i class="fa fa-home"></i>');
+menu[1] = new menuCreat ("Sản phẩm", "adminpage.html?products", '<i class="fa fa-paw"></i>');
+menu[2] = new menuCreat ("Đơn hàng", "adminpage.html?order", '<i class="fa fa-file-text"></i>');
+menu[3] = new menuCreat ("Khách hàng", "adminpage.html?customer", '<i class="fa fa-id-card"></i>');
+menu[4] = new menuCreat ("Thống kê", "adminpage.html?statistic", '<i class="fa fa-bar-chart"></i>');
 
 //menuOptions chứa text để innerHTML đến menuList
 var menuOptions = "";
@@ -27,7 +28,7 @@ for (var i = 0; i < menu.length; i++) {
   }
   else
     menuActice = "";
-  menuOptions += '<li><a class="' + menuActice +'" href="' + menu[i].menuLink + '">' + menu[i].menuTitle + '</a></li>';
+  menuOptions += '<li><a class="' + menuActice +'" href="' + menu[i].menuLink + '">' + menu[i].menuIcon + ' ' + menu[i].menuTitle + '</a></li>';
 };
 
 menuList[0].innerHTML = menuOptions;
@@ -64,7 +65,7 @@ function homeLayout() {
             '<span>Đơn hàng</span>' +
           '</div>' +
           '<div class="number">' +
-            '<strong>5135</strong>' +
+            '<strong>5000</strong>' +
           '</div>' +
         '</div>' +
       '</div>' +
@@ -75,7 +76,7 @@ function homeLayout() {
             '<span>Khách hàng</span>' +
           '</div>' +
           '<div class="number">' +
-            '<strong>6254</strong>' +
+            '<strong>6000</strong>' +
         '  </div>' +
       '  </div>' +
     '  </div>' +
@@ -86,7 +87,7 @@ function homeLayout() {
         '    <span>Lượt truy cập</span>' +
         '  </div>' +
         '  <div class="number">' +
-        '    <strong>15112</strong>' +
+        '    <strong>15000</strong>' +
         '  </div>' +
       '  </div>' +
     '  </div>' +
@@ -119,7 +120,7 @@ function productsLayout() {
   '    </table>' +
   '  </div>' +
   '  <div class="tbl-content">' +
-  '    <!-- table here -->' +
+        /* table here */
   '  </div>' +
   '  <div class="tbl-searchbar">' +
   '    <form>' +
@@ -130,9 +131,9 @@ function productsLayout() {
   '      <input type="text" id="tbl-searchbar" onkeyup="showItem()" placeholder="Search...">' +
     '  </form>' +
   '  </div>' +
+  '<button onclick="addProductToTempArr()">Thêm Sản Phẩm</button>' +
   '</div>';
 }
-
 function orderLayout() {
   document.getElementById('content').innerHTML = '<div id="ad-order-zone" class="date-selector">' +
   '  <div class="wrapper">' +
@@ -147,11 +148,23 @@ function orderLayout() {
   '      <div class="select-btn">' +
   '        <button class="button bg-violet" onclick="dateFilter()">Chọn</button>' +
   '      </div>' +
+  '  <div class="tbl-searchbar">' +
+  '    <form>' +
+  '      <select id="order-filter" onchange="displayBySelect()">' +
+  '        <option value="0">Tìm theo mã đơn</option>' +
+  '        <option value="1">Tìm theo tên khách hàng</option>' +
+  '        <option value="5.2">Đơn hàng chưa xử lý</option>' +
+  '        <option value="5.4">Đơn hàng đã xử lý</option>' +
+  '        <option value="5.6">Đơn hàng đã hủy</option>' +
+  '      </select>' +
+  '      <input type="text" id="order-search" onkeyup="showItem()" placeholder="Search...">' +
+    '  </form>' +
+  '  </div>' +
   '  </div>' +
   '</div>'+
   '<div class="table shadow">' +
   '  <div class="tbl-header">' +
-  '    <table class="bg-green">' +
+  '    <table class="bg-violet">' +
   '      <tr>' +
   '        <th>Mã đơn hàng</th>' +
   '        <th>Tên khách hàng</th>' +

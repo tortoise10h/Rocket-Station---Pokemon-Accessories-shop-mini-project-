@@ -1,5 +1,4 @@
 let searchUrlPage = url.split("?")[1];
-console.log(searchUrlPage);
 function displaySearchResult(){
 	if(searchUrlPage.indexOf("main-search") > -1){
 		let searchList = getAllProductMatch();

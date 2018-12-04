@@ -55,7 +55,3 @@ function userSearch(){
   }
   
 }
-
-function editCustomer(){
-  window.open();
-}

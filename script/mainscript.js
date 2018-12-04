@@ -27,8 +27,9 @@ function urlHandle(){
 
         let bestSellerText = bestSellerTitle +  "<div class='products'>";
         for(let i = 0; i < bestSellerArr.length; i++){
-            let filter = bestSellerArr[i].id.substr(0,3);
-            let productLink = url + "?" + filter + "#" + bestSellerArr[i].id;
+            // console.log(bestSellerArr[i].id.substr(0,3));
+            // let filter = bestSellerArr[i].id.substr(0,3);
+            let productLink = url + "?" + bestSellerArr[i].id.substr(0,3) + "#" + bestSellerArr[i].id;
             bestSellerText += "<div class='product'>" +
             "<div class='product-img'>"+
             "<a href='" + productLink + "' target='_blank'>" + 
@@ -232,7 +233,7 @@ function addLeftMenu(categoryUrl){
     leftMenu.className = "left-menu";
     mainZone.appendChild(leftMenu);
     //add Inpage search zone
-    leftMenu.appendChild(addSearchInpage());
+    // leftMenu.appendChild(addSearchInpage());
     //add Filter 
     let filterZone = document.createElement('div');
     filterZone.className = "filter";
@@ -257,11 +258,16 @@ function addSearchInpage(){
 }
 function filterList(categoryUrl){
     let text = '<ul>' +
-        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'blue&0">xanh</a></li>' +
-        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'red&0">đỏ</a></li>' +
-        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'violet&0">tím</a></li>' +
-        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'yellow&0">vàng</a></li>' +
-        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'white&0">trắng</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'xanh&0">xanh</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'do&0">đỏ</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'tim&0">tím</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'vang&0">vàng</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'xám&0">xám</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'xanhla&0">xanh lá</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'den&0">đen</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'trang&0">trắng</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'cam&0">cam</a></li>' +
+        '<li><a href="index.html' + '?' + categoryUrl + '&' + 'hong&0">hồng</a></li>' +
     '</ul>';
     return text;
 }   
@@ -682,9 +688,9 @@ window.onload = function(){
     checkLoginStatus();
     displayUser(); 
     urlHandle();
-    getProduct();
     sortByFixPrice();
     createShoppingCart();
     createOrderListPage();
     displaySearchResult();
+    getProduct();
 }
